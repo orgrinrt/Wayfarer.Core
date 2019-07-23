@@ -62,9 +62,7 @@
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Test1.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utils" />
+    <Compile Include="Utils\Test2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
