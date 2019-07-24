@@ -56,7 +56,7 @@ namespace Wayfarer.Console
         public void SendCmd()
         {
             GD.Print("Entryfield: " + _entryField.Text);
-            _console.ExecCurrEntry(_entryField.Text);
+            _console.Exec(_entryField.Text);
             UpdateGuiEntries();
             _entryField.Text = "";
         }

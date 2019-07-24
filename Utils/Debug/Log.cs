@@ -150,10 +150,10 @@ namespace Wayfarer.Utils.Debug
             }
         }
         
-        public static void Console(string path, string value, bool gdPrint = false)
+        public static void Console(string value, bool gdPrint = false)
         {
-            string console = _sw.ElapsedMilliseconds + " | " + path + " | " + value;
-            string print = _sw.ElapsedMilliseconds + " | " + path + " | " + "CONSOLE: " + value;
+            string console = value;
+            string print = _sw.ElapsedMilliseconds + " | " + "CONSOLE: " + value;
             
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
             _printQueue.Enqueue(new PrintJob(_logConsole.FullName, console));

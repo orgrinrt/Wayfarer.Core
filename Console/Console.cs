@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
+using Wayfarer.Utils.Debug;
 
 namespace Wayfarer.Console
 {
     public class Console
     {
-        private List<string> _cmdHistory = new List<string>();
-        private string _currCmdEntryField = "";
-        
-        private Parser _parser = new Parser();
+        private readonly Parser _parser = new Parser();
 
         public void Init(ConsoleCommandBase cmdBase)
         {
@@ -15,30 +13,14 @@ namespace Wayfarer.Console
             _parser.SetCommandBase(cmdBase);
         }
 
-        public void UpdateCurrEntryField(string entry)
+        public void Exec(string entry)
         {
-            _currCmdEntryField = entry;
-        }
-
-        public void ExecCurrEntry(string entry)
-        {
-            UpdateCurrEntryField(entry);
             _parser.Parse(entry);
-        }
-
-        public void AddToCmdHistory(string entry)
-        {
-            _cmdHistory.Add(entry);
-        }
-
-        public List<string> GetCmdHistory()
-        {
-            return _cmdHistory;
         }
 
         public void Echo(string entry)
         {
-            _cmdHistory.Add(entry);
+            Log.Console(entry);
         }
     }
 }

@@ -10,7 +10,6 @@ namespace Wayfarer.Console
 
         public void Parse(string cmd)
         {
-            string cmdId = "there was an: error";
             Exec(FirstPass(cmd));
         }
         
@@ -55,7 +54,7 @@ namespace Wayfarer.Console
                 case "echo":
                     for (int i = 1; i < values.Length; i++)
                     {
-                        _console.AddToCmdHistory(values[i]);
+                        _console.Echo(values[i]);
                     }
                     break;
                     
@@ -70,7 +69,7 @@ namespace Wayfarer.Console
                         // TODO: Create some default abilities
                     }
 
-                    _console.AddToCmdHistory(values[0] + " set to " + values[1]);
+                    _console.Echo(values[0] + " set to " + values[1]);
                     break;
             }
         }
