@@ -59,10 +59,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\Command.cs" />
+    <Compile Include="Console\Console.cs" />
+    <Compile Include="Console\ConsoleBridge.cs" />
+    <Compile Include="Console\ConsoleCommandBase.cs" />
+    <Compile Include="Console\Parser.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Test1.cs" />
-    <Compile Include="Utils\Test2.cs" />
+    <Compile Include="Utils\Coroutine\CoroutineHandle.cs" />
+    <Compile Include="Utils\Coroutine\CoroutineHandler.cs" />
+    <Compile Include="Utils\Debug\Log.cs" />
+    <Compile Include="Utils\Debug\LoggingLevel.cs" />
+    <Compile Include="Utils\Files\Paths.cs" />
+    <Compile Include="Utils\Helpers\Bytes.cs" />
+    <Compile Include="Utils\Helpers\Color.cs" />
+    <Compile Include="Utils\Helpers\Direction.cs" />
+    <Compile Include="Utils\Helpers\Math.cs" />
+    <Compile Include="Utils\Helpers\Node.cs" />
+    <Compile Include="Utils\Helpers\Sqlite.cs" />
+    <Compile Include="Utils\Helpers\Texture.cs" />
+    <Compile Include="Utils\Helpers\Vectors.cs" />
+    <Compile Include="Utils\Physics\CollisionGroup.cs" />
+    <Compile Include="Utils\Physics\CollisionLayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
