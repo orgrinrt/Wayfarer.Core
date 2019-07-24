@@ -6,7 +6,7 @@ namespace Wayfarer.Utils.Files
     public class Paths
     {
         // SYSTEM:;
-        public static string UserPath = GetUserPath();
+        public static string UserPath => GetUserPath();
 
         public static string LogPath = Path.Combine(UserPath, "Logs");
         
@@ -43,8 +43,6 @@ namespace Wayfarer.Utils.Files
         public static string DefaultLangContentPath = "res://Content/Lang";
         
         public static string DefaultMasterContentPath = "res://Content/Default/Master";
-        
-        public static string DefaultCacheTemplateContentPath = "res://Content/Default/CacheTemplates";
 
         public static string ModPath = "res://Mods";
         

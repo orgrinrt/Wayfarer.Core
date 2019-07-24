@@ -50,7 +50,7 @@ namespace Wayfarer.Utils.Helpers
                 parentCandidate = parentCandidate.GetParent();
             }
             
-            Debug.Log.Error("Helpers.GetParentOfType<T>()", "Couldn't find a parent with type " + typeof(T) + " to node " + node.Name, true);
+            Debug.Log.Error("Couldn't find a parent with type " + typeof(T) + " to node " + node.Name, true);
 
             return null;
         }
@@ -71,7 +71,7 @@ namespace Wayfarer.Utils.Helpers
                 }
             }
 
-            Debug.Log.Error("Helpers.GetThemeUsed()", "Couldn't find a theme for control: " + control.Name, true);
+            Debug.Log.Error("Couldn't find a theme for control: " + control.Name, true);
             return null;
         }
     }

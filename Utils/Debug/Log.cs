@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using Godot;
 using Wayfarer.Utils.Files;
 using Directory = System.IO.Directory;
@@ -80,9 +83,9 @@ namespace Wayfarer.Utils.Debug
         }
         
         
-        public static void Print(string path, string value, bool gdPrint = false)
+        public static void Print(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
         {
-            string print = _sw.ElapsedMilliseconds + " | " + path + " | " + value;
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
             
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
 
@@ -92,10 +95,10 @@ namespace Wayfarer.Utils.Debug
             }
         }
         
-        public static void Error(string path, string value, bool gdPrint = false)
+        public static void Error(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
         {
-            string error = _sw.ElapsedMilliseconds + " | " + path + " | " + value;
-            string print = _sw.ElapsedMilliseconds + " | " + path + " | " + "ERROR: " + value;
+            string error = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + "ERROR: " + value;
             
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
             _printQueue.Enqueue(new PrintJob(_logError.FullName, error));
@@ -106,13 +109,14 @@ namespace Wayfarer.Utils.Debug
             }
         }
         
-        public static void Crash(string path, string value, bool gdPrint = false)
+        public static void Crash(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
         {
-            string crash = _sw.ElapsedMilliseconds + " | " + path + " | " + value;
-            string print = _sw.ElapsedMilliseconds + " | " + path + " | " + "CRASH: " + value;
+            string alert = "!!!!!!!!!!!!!";
+            string crash = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + "CRASH: " + value;
             
+            _printQueue.Enqueue(new PrintJob(_logPrint.FullName, alert));
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
-            _printQueue.Enqueue(new PrintJob(_logError.FullName, print));
             _printQueue.Enqueue(new PrintJob(_logCrash.FullName, crash));
             
             if (gdPrint)
@@ -122,10 +126,10 @@ namespace Wayfarer.Utils.Debug
             //Game.Self.Crash();
         }
         
-        public static void Ui(string path, string value, bool gdPrint = false)
+        public static void Ui(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
         {
-            string ui = _sw.ElapsedMilliseconds + " | " + path + " | " + value;
-            string print = _sw.ElapsedMilliseconds + " | " + path + " | " + "UI: " + value;
+            string ui = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + "UI: " + value;
             
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
             _printQueue.Enqueue(new PrintJob(_logUi.FullName, ui));
@@ -136,10 +140,10 @@ namespace Wayfarer.Utils.Debug
             }
         }
         
-        public static void Database(string path, string value, bool gdPrint = false)
+        public static void Database(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
         {
-            string db = _sw.ElapsedMilliseconds + " | " + path + " | " + value;
-            string print = _sw.ElapsedMilliseconds + " | " + path + " | " + "DATABASE: " + value;
+            string db = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + "DATABASE: " + value;
             
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
             _printQueue.Enqueue(new PrintJob(_logDb.FullName, db));
@@ -162,6 +166,26 @@ namespace Wayfarer.Utils.Debug
             {
                 GD.Print(print);
             }
+        }
+
+        private static string ParseFilePathToTypeName(string fullPath) // NOTE: This may not be very performant, it's a quick hack, we'll figure a better way later
+        {
+            string[] split = fullPath.Split("\\");
+            string last = split[split.Length - 1];
+            char[] lasts = last.ToCharArray();
+            char[] final = new char[lasts.Length - 3];
+            for (int i = 0; i < final.Length; i++)
+            {
+                final[i] = lasts[i];
+            }
+
+            string finalString = "";
+            foreach (char c in final)
+            {
+                finalString = String.Concat(finalString, c);
+            }
+
+            return finalString;
         }
         
         private static void ProcessQueue()

@@ -3,6 +3,7 @@
     public enum LoggingLevel
     {
         None,
+        Minimal,
         Default,
         Advanced,
         All
