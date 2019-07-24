@@ -117,11 +117,16 @@ namespace Wayfarer.Utils.Debug
             
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, alert));
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
+            _printQueue.Enqueue(new PrintJob(_logPrint.FullName, alert));
+            
             _printQueue.Enqueue(new PrintJob(_logCrash.FullName, crash));
+            
             
             if (gdPrint)
             {
+                GD.Print(alert);
                 GD.Print(print);
+                GD.Print(alert);
             }
             //Game.Self.Crash();
         }
