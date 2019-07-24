@@ -79,6 +79,7 @@
     <Compile Include="Utils\Helpers\Sqlite.cs" />
     <Compile Include="Utils\Helpers\Texture.cs" />
     <Compile Include="Utils\Helpers\Vectors.cs" />
+    <Compile Include="Utils\Localization\Lang.cs" />
     <Compile Include="Utils\Physics\CollisionGroup.cs" />
     <Compile Include="Utils\Physics\CollisionLayer.cs" />
   </ItemGroup>
