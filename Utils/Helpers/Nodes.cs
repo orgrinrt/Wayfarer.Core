@@ -4,7 +4,7 @@ using Wayfarer.Utils.Attributes;
 
 namespace Wayfarer.Utils.Helpers
 {
-    public static class Node
+    public static class Nodes
     {
         public static void SetupWayfarer(this Godot.Node self)
         {
