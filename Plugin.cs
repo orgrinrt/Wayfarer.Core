@@ -4,9 +4,9 @@ using Godot;
 namespace Wayfarer
 {
     [Tool]
-    public class Plugin// : EditorPlugin
+    public class Plugin
     {
-              
+        
     }
 }
 //#endif

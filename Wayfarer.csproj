@@ -106,7 +106,7 @@
     <Compile Include="Utils\Helpers\Color.cs" />
     <Compile Include="Utils\Helpers\Direction.cs" />
     <Compile Include="Utils\Helpers\Math.cs" />
-    <Compile Include="Utils\Helpers\Node.cs" />
+    <Compile Include="Utils\Helpers\Nodes.cs" />
     <Compile Include="Utils\Helpers\Sqlite.cs" />
     <Compile Include="Utils\Helpers\Texture.cs" />
     <Compile Include="Utils\Helpers\Vectors.cs" />
