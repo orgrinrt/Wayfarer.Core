@@ -1,10 +1,42 @@
 ﻿using System.Collections.Generic;
 using Godot;
+using Wayfarer.Utils.Attributes;
 
 namespace Wayfarer.Utils.Helpers
 {
     public static class Node
     {
+        public static void SetupWayfarer(this Godot.Node self)
+        {
+            self.SetupAttributes();
+
+            if (self is WayfarerNode)
+            {
+                // further stuff that only concerns the WayfarerNodes
+            }
+            // what else? if nothing else, we should just directly call SetupAttributes
+        }
+        
+        public static T GetNode<T>(this Godot.Node self, string path) where T : Godot.Node
+        {
+            return self.GetNode(path) as T;
+        }
+        
+        public static T GetNode<T>(this Godot.Node self, NodePath path) where T : Godot.Node
+        {
+            return self.GetNode(path) as T;
+        }
+        
+        public static T FindNode<T>(this Godot.Node self, string mask, bool recursive = true, bool owned = true) where T : Godot.Node
+        {
+            return self.FindNode(mask, recursive, owned) as T;
+        }
+        
+        public static T GetChild<T>(this Godot.Node self, int idx) where T : Godot.Node
+        {
+            return self.GetChild(idx) as T;
+        }
+        
         public static void ReParent(this Godot.Node child, Godot.Node newParent)
         {
             child.GetParent().RemoveChild(child);

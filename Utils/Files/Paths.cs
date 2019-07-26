@@ -72,5 +72,10 @@ namespace Wayfarer.Utils.Files
             // for now only combines internal godot paths (because / is valid there, but in global paths OS may react differently to / )
             return a + "/" + b;
         }
+
+        public static string Globalize(string godotPath)
+        {
+            return ProjectSettings.GlobalizePath(godotPath);
+        }
     }
 }

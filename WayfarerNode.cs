@@ -1,8 +1,8 @@
 ﻿using Godot;
 
-namespace Vilirn_Shardwielders.Addons.Wayfarer
+namespace Wayfarer
 {
-    public class Wayfarer : Node
+    public class WayfarerNode : Node
     {
         public override void _Ready()
         {
