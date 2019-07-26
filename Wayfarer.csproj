@@ -71,6 +71,7 @@
     <Compile Include="Core\GameContext.cs" />
     <Compile Include="Core\GameState.cs" />
     <Compile Include="Core\Nodes\WayfarerNode.cs" />
+    <Compile Include="Core\Plugin\EditorMenuBar.cs" />
     <Compile Include="Core\Systems\Cameras\Camera.cs" />
     <Compile Include="Core\Systems\Cameras\FreeCamera.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />
@@ -109,7 +110,6 @@
     <Compile Include="Core\Utils\Localization\Lang.cs" />
     <Compile Include="Core\Utils\Physics\CollisionGroup.cs" />
     <Compile Include="Core\Utils\Physics\CollisionLayer.cs" />
-    <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
