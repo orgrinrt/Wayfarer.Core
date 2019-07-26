@@ -36,7 +36,7 @@ namespace Wayfarer.Console
                 SetVisible(false);
                 GetTree().SetPause(false);
             }
-            UpdateGuiEntries();
+            //UpdateGuiEntries();
             
         }
 
@@ -56,11 +56,11 @@ namespace Wayfarer.Console
         public void SendCmd()
         {
             GD.Print("Entryfield: " + _entryField.Text);
-            _console.ExecCurrEntry(_entryField.Text);
-            UpdateGuiEntries();
+            _console.Exec(_entryField.Text);
+            //UpdateGuiEntries();
             _entryField.Text = "";
         }
-
+/*
         public void UpdateGuiEntries()
         {
             foreach (Godot.Node child in _cmdHistoryList.GetChildren())
@@ -74,6 +74,6 @@ namespace Wayfarer.Console
                 entry.Text = str;
                 _cmdHistoryList.AddChild(entry);
             }
-        }
+        }*/
     }
 }
