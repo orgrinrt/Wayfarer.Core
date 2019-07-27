@@ -15,17 +15,6 @@ namespace Wayfarer
         private EditorMenuBar _toolbar;
         public EditorInterface EditorInterface => GetEditorInterface();
 
-        public override bool Build()
-        {
-            if (!EditorInterface.IsPluginEnabled("Wayfarer")) // this should never happen, but just a sanity thing
-            {
-                Log.Editor("Solution was built, so removing the old EditorMenuBar...", true);
-                RemoveOldEditorMenubar();
-            }
-            
-            return base.Build();
-        }
-
         public override void _EnterTree()
         {
             AddCustomTypes();
@@ -38,6 +27,13 @@ namespace Wayfarer
             RemoveCustomTypes();
             RemoveCustomResources();
             RemoveCustomControlsFromEditor();
+        }
+
+        public override void DisablePlugin()
+        {
+            base.DisablePlugin();
+
+            RemoveOldEditorMenubar();
         }
 
         private void AddCustomTypes()
