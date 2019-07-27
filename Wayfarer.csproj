@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Wayfarer.Overwatch\EditorOverwatch.cs" />
     <Compile Include="Core\Console\Command.cs" />
     <Compile Include="Core\Console\Console.cs" />
     <Compile Include="Core\Console\ConsoleBridge.cs" />
@@ -71,7 +72,10 @@
     <Compile Include="Core\GameContext.cs" />
     <Compile Include="Core\GameState.cs" />
     <Compile Include="Core\Nodes\WayfarerNode.cs" />
+    <Compile Include="Core\Plugin\AddNodeDialog.cs" />
     <Compile Include="Core\Plugin\EditorMenuBar.cs" />
+    <Compile Include="Core\Plugin\Resources\WayfarerNodeData.cs" />
+    <Compile Include="Core\Plugin\Resources\WayfarerNodeList.cs" />
     <Compile Include="Core\Systems\Cameras\Camera.cs" />
     <Compile Include="Core\Systems\Cameras\FreeCamera.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />
@@ -111,6 +115,9 @@
     <Compile Include="Core\Utils\Physics\CollisionGroup.cs" />
     <Compile Include="Core\Utils\Physics\CollisionLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Wayfarer.Overwatch\plugin.cfg" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
