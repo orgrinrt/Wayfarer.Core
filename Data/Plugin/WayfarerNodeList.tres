@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Addons/Wayfarer/Assets/Icons/wayfarerNodes.png" type="Texture" id=1]
+[ext_resource path="res://Addons/Wayfarer/Data/Plugin/WayfarerNodes/WayfarerNode.tres" type="Resource" id=2]
+[ext_resource path="res://Addons/Wayfarer/Data/Plugin/WayfarerNodes/Manager.tres" type="Resource" id=3]
+[ext_resource path="res://Addons/Wayfarer/Core/Plugin/Resources/WayfarerNodeList.cs" type="Script" id=4]
+
+[resource]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 1 )
+}
+_nodes = [ ExtResource( 2 ), ExtResource( 3 ) ]

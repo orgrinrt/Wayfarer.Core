@@ -13,6 +13,7 @@
     <OutputPath>$(ProjectDir)\..\..\.mono\temp\bin\$(Configuration)</OutputPath>
     <BaseIntermediateOutputPath>$(ProjectDir)\..\..\.mono\temp\obj</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
+    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,11 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Console\Command.cs" />
-    <Compile Include="Console\Console.cs" />
-    <Compile Include="Console\ConsoleBridge.cs" />
-    <Compile Include="Console\ConsoleCommandBase.cs" />
-    <Compile Include="Console\Parser.cs" />
+    <Compile Include="Core\Console\Command.cs" />
+    <Compile Include="Core\Console\Console.cs" />
+    <Compile Include="Core\Console\ConsoleBridge.cs" />
+    <Compile Include="Core\Console\ConsoleCommandBase.cs" />
+    <Compile Include="Core\Console\Parser.cs" />
     <Compile Include="Core\Constants\Actions.cs" />
     <Compile Include="Core\Constants\Groups.cs" />
     <Compile Include="Core\Constants\LevelConstants.cs" />
@@ -69,50 +70,50 @@
     <Compile Include="Core\Game.cs" />
     <Compile Include="Core\GameContext.cs" />
     <Compile Include="Core\GameState.cs" />
+    <Compile Include="Core\Nodes\WayfarerNode.cs" />
+    <Compile Include="Core\Plugin\AddNodeDialog.cs" />
+    <Compile Include="Core\Plugin\EditorMenuBar.cs" />
+    <Compile Include="Core\Plugin\Resources\WayfarerNodeData.cs" />
+    <Compile Include="Core\Plugin\Resources\WayfarerNodeList.cs" />
+    <Compile Include="Core\Systems\Cameras\Camera.cs" />
+    <Compile Include="Core\Systems\Cameras\FreeCamera.cs" />
+    <Compile Include="Core\Systems\Iterator.cs" />
+    <Compile Include="Core\Systems\Managers\AudioManager.cs" />
+    <Compile Include="Core\Systems\Managers\CameraManager.cs" />
+    <Compile Include="Core\Systems\Managers\CursorGlyph.cs" />
+    <Compile Include="Core\Systems\Managers\Manager.cs" />
+    <Compile Include="Core\Systems\Managers\MouseManager.cs" />
+    <Compile Include="Core\Systems\Managers\MusicManager.cs" />
+    <Compile Include="Core\Systems\Managers\SceneManager.cs" />
+    <Compile Include="Core\Systems\Managers\SpeechManager.cs" />
+    <Compile Include="Core\Systems\Managers\SubtitleManager.cs" />
+    <Compile Include="Core\Systems\Managers\TimeManager.cs" />
+    <Compile Include="Core\Systems\Managers\TooltipManager.cs" />
+    <Compile Include="Core\Systems\TimeScaleState.cs" />
+    <Compile Include="Core\UI\IControlWithLangString.cs" />
+    <Compile Include="Core\UI\IControlWithParentPage.cs" />
+    <Compile Include="Core\UI\Screens\LoadScreen.cs" />
     <Compile Include="Core\UserPrefCategory.cs" />
     <Compile Include="Core\UserPrefs.cs" />
-    <Compile Include="Plugin.cs" />
-    <Compile Include="Systems\Managers\SpeechManager.cs" />
-    <Compile Include="Systems\Managers\TimeManager.cs" />
-    <Compile Include="UI\Screens\LoadScreen.cs" />
-    <Compile Include="Utils\Attributes\AttributeHandler.cs" />
-    <Compile Include="Utils\Attributes\GetAttribute.cs" />
-    <Compile Include="WayfarerNode.cs" />
+    <Compile Include="Core\Utils\Attributes\AttributeHandler.cs" />
+    <Compile Include="Core\Utils\Attributes\GetAttribute.cs" />
+    <Compile Include="Core\Utils\Coroutine\CoroutineHandle.cs" />
+    <Compile Include="Core\Utils\Coroutine\CoroutineHandler.cs" />
+    <Compile Include="Core\Utils\Debug\Log.cs" />
+    <Compile Include="Core\Utils\Debug\LoggingLevel.cs" />
+    <Compile Include="Core\Utils\Files\Paths.cs" />
+    <Compile Include="Core\Utils\Helpers\Bytes.cs" />
+    <Compile Include="Core\Utils\Helpers\Color.cs" />
+    <Compile Include="Core\Utils\Helpers\Direction.cs" />
+    <Compile Include="Core\Utils\Helpers\Math.cs" />
+    <Compile Include="Core\Utils\Helpers\Nodes.cs" />
+    <Compile Include="Core\Utils\Helpers\Sqlite.cs" />
+    <Compile Include="Core\Utils\Helpers\Texture.cs" />
+    <Compile Include="Core\Utils\Helpers\Vectors.cs" />
+    <Compile Include="Core\Utils\Localization\Lang.cs" />
+    <Compile Include="Core\Utils\Physics\CollisionGroup.cs" />
+    <Compile Include="Core\Utils\Physics\CollisionLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Systems\Cameras\Camera.cs" />
-    <Compile Include="Systems\Cameras\FreeCamera.cs" />
-    <Compile Include="Systems\Iterator.cs" />
-    <Compile Include="Systems\Managers\AudioManager.cs" />
-    <Compile Include="Systems\Managers\CameraManager.cs" />
-    <Compile Include="Systems\Managers\CursorGlyph.cs" />
-    <Compile Include="Systems\Managers\Manager.cs" />
-    <Compile Include="Systems\Managers\MouseManager.cs" />
-    <Compile Include="Systems\Managers\MusicManager.cs" />
-    <Compile Include="Systems\Managers\SceneManager.cs" />
-    <Compile Include="Systems\Managers\SubtitleManager.cs" />
-    <Compile Include="Systems\Managers\TooltipManager.cs" />
-    <Compile Include="Systems\TimeScaleState.cs" />
-    <Compile Include="UI\IControlWithLangString.cs" />
-    <Compile Include="UI\IControlWithParentPage.cs" />
-    <Compile Include="Utils\Coroutine\CoroutineHandle.cs" />
-    <Compile Include="Utils\Coroutine\CoroutineHandler.cs" />
-    <Compile Include="Utils\Debug\Log.cs" />
-    <Compile Include="Utils\Debug\LoggingLevel.cs" />
-    <Compile Include="Utils\Files\Paths.cs" />
-    <Compile Include="Utils\Helpers\Bytes.cs" />
-    <Compile Include="Utils\Helpers\Color.cs" />
-    <Compile Include="Utils\Helpers\Direction.cs" />
-    <Compile Include="Utils\Helpers\Math.cs" />
-    <Compile Include="Utils\Helpers\Nodes.cs" />
-    <Compile Include="Utils\Helpers\Sqlite.cs" />
-    <Compile Include="Utils\Helpers\Texture.cs" />
-    <Compile Include="Utils\Helpers\Vectors.cs" />
-    <Compile Include="Utils\Localization\Lang.cs" />
-    <Compile Include="Utils\Physics\CollisionGroup.cs" />
-    <Compile Include="Utils\Physics\CollisionLayer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Nodes" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,6 +27,7 @@ namespace Wayfarer.Utils.Debug
         private static FileInfo _logDb;
         private static FileInfo _logConsole;
         private static FileInfo _logServer;
+        private static FileInfo _logEditor;
         
         
         private static Queue<PrintJob> _printQueue = new Queue<PrintJob>();
@@ -48,7 +49,8 @@ namespace Wayfarer.Utils.Debug
                        || fi.Name == "ui.log"
                        || fi.Name == "database.log"
                        || fi.Name == "console.log"
-                       || fi.Name == "server.log")
+                       || fi.Name == "server.log"
+                       || fi.Name == "editor.log")
                 {
                     fi.Delete();
                 }
@@ -62,6 +64,7 @@ namespace Wayfarer.Utils.Debug
             _logDb = new FileInfo(Path.Combine(Paths.LogPath, "database.log"));
             _logConsole = new FileInfo(Path.Combine(Paths.LogPath, "console.log"));
             _logServer = new FileInfo(Path.Combine(Paths.LogPath, "server.log"));
+            _logEditor = new FileInfo(Path.Combine(Paths.LogPath, "editor.log"));
 
             _logPrint.Create().Dispose();
             _logError.Create().Dispose();
@@ -71,6 +74,7 @@ namespace Wayfarer.Utils.Debug
             _logDb.Create().Dispose();
             _logConsole.Create().Dispose();
             _logServer.Create().Dispose();
+            _logEditor.Create().Dispose();
 
             _sw = new Stopwatch();
             _timer = new Timer();
@@ -152,6 +156,20 @@ namespace Wayfarer.Utils.Debug
             
             _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
             _printQueue.Enqueue(new PrintJob(_logDb.FullName, db));
+            
+            if (gdPrint)
+            {
+                GD.Print(print);
+            }
+        }
+        
+        public static void Editor(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
+        {
+            string editor = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + "EDITOR: " + value;
+            
+            _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
+            _printQueue.Enqueue(new PrintJob(_logEditor.FullName, editor));
             
             if (gdPrint)
             {
