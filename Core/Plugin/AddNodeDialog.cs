@@ -1,8 +1,12 @@
+#if TOOLS
+
 using Godot;
+using Wayfarer.Utils.Debug;
 
 namespace Wayfarer.Core.Plugin
 {
-    public class AddNodeDialog : PopupDialog
+    [Tool]
+    public class AddNodeDialog : WindowDialog
     {
         [Export()] private string _test;
         
@@ -10,7 +14,7 @@ namespace Wayfarer.Core.Plugin
     
         public override void _Ready()
         {
-            GD.Print("omasta: " + this.GetType());
+            Log.Editor("AddonDialog Ready " + this.GetType());
         }
 
         public void SetSelectedNodes(Godot.Collections.Array selectedNodes)
@@ -19,3 +23,5 @@ namespace Wayfarer.Core.Plugin
         }
     }
 }
+
+#endif
