@@ -16,6 +16,7 @@ namespace Wayfarer.Core.Plugin
     
         private Wayfarer.Core.Plugin.AddNodeDialog _addNodeDialog;
         private EditorInterface _editorInterface;
+        private WayfarerPluginManager _pluginManager;
 
         public AddNodeDialog AddNodeDialog => _addNodeDialog;
     
@@ -24,39 +25,10 @@ namespace Wayfarer.Core.Plugin
             this.SetupWayfarer();
 
             _addNodeButton.Connect("button_up", this, nameof(OnButtonPressed));
-        
-            PackedScene addNodeDialogScene = GD.Load<PackedScene>("res://Addons/Wayfarer/Assets/Scenes/Controls/AddNodeDialog.tscn");
-            Node node = addNodeDialogScene.Instance();
-            
-            try
-            {
-                Wayfarer.Core.Plugin.AddNodeDialog dialog = (Wayfarer.Core.Plugin.AddNodeDialog)addNodeDialogScene.Instance();
-            }
-            catch (Exception e)
-            {
-                Log.Editor(e.Message, true);
-            }
-            
-            //_addNodeDialog = (AddNodeDialog)addNodeDialogScene.Instance();
-            AddChild(node);
-            GD.Print(GetType());
-            GD.Print(addNodeDialogScene.Instance().GetType());
-            GD.Print(node.Name);
-            GD.Print(node.GetType());
-        
-            try
-            {
-                _addNodeDialog = (AddNodeDialog)node;
-            }
-            catch (Exception e)
-            {
-                Log.Editor(e.Message, true);
-            }
-            GD.Print("Is not null: " + (_addNodeDialog != null));
-            //GD.Print(_addNodeDialog.Name);
-        
-            //_editorInterface.GetBaseControl().AddChild(_addNodeDialog);
 
+            PackedScene addNodeDialogScene = GD.Load<PackedScene>("res://Addons/Wayfarer/Assets/Scenes/Controls/AddNodeDialog.tscn");
+            _addNodeDialog = (AddNodeDialog)addNodeDialogScene.Instance();
+            AddChild(_addNodeDialog);
         }
 
         private void OnButtonPressed()
@@ -64,12 +36,8 @@ namespace Wayfarer.Core.Plugin
             EditorSelection selection = _editorInterface.GetSelection();
             Array selectedNodes = selection.GetSelectedNodes();
 
-            GD.Print(GetChildCount());
-            GD.Print(_addNodeDialog.Name);
-            //_addNodeDialog.Name = "Lol";
-            //GD.Print(_addNodeDialog.Name);
-            //_addNodeDialog.SetSelectedNodes(selectedNodes);
-            //_addNodeDialog.Popup_();
+            _addNodeDialog.SetSelectedNodes(selectedNodes);
+            _addNodeDialog.Popup_();
         
             foreach (Node node in selectedNodes)
             {
@@ -81,6 +49,11 @@ namespace Wayfarer.Core.Plugin
         public void SetEditorInterface(EditorInterface editor)
         {
             _editorInterface = editor;
+        }
+        
+        public void SetPluginManager(WayfarerPluginManager manager)
+        {
+            _pluginManager = manager;
         }
     }
 }
