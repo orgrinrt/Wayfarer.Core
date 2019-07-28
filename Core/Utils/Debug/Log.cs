@@ -270,6 +270,66 @@ namespace Wayfarer.Utils.Debug
             }
         }
         
+        public static void Editor(string value, Exception e, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
+        {
+            string editor = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + "EDITOR: " + value;
+            
+            _printQueue.Enqueue(new PrintJob(_logWayfarerPrint.FullName, print));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, editor));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, ""));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, e.Message));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, "in: " + e.Source));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, e.StackTrace));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, ""));
+            
+            
+            if (gdPrint)
+            {
+                GD.Print(print);
+                GD.Print("");
+                GD.Print(e.Message);
+                GD.Print("in: " + e.Source);
+                GD.Print(e.StackTrace);
+                GD.Print("");
+            }
+        }
+        
+        public static void Wayfarer(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
+        {
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            
+            _printQueue.Enqueue(new PrintJob(_logWayfarerPrint.FullName, print));
+            
+            if (gdPrint)
+            {
+                GD.Print(print);
+            }
+        }
+        
+        public static void Wayfarer(string value, Exception e, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
+        {
+            string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            
+            _printQueue.Enqueue(new PrintJob(_logWayfarerPrint.FullName, print));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, ""));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, e.Message));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, "in: " + e.Source));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, e.StackTrace));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, ""));
+            
+            
+            if (gdPrint)
+            {
+                GD.Print(print);
+                GD.Print("");
+                GD.Print(e.Message);
+                GD.Print("in: " + e.Source);
+                GD.Print(e.StackTrace);
+                GD.Print("");
+            }
+        }
+        
         public static void Console(string value, bool gdPrint = false)
         {
             string console = value;
