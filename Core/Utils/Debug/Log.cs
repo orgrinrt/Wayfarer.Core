@@ -18,6 +18,7 @@ namespace Wayfarer.Utils.Debug
         public static LoggingLevel LoggingLevel => _loggingLevel;
         
         private static DirectoryInfo _logDir;
+        private static DirectoryInfo _wayfarerDir;
         
         private static FileInfo _logPrint;
         private static FileInfo _logError;
@@ -27,13 +28,17 @@ namespace Wayfarer.Utils.Debug
         private static FileInfo _logDb;
         private static FileInfo _logConsole;
         private static FileInfo _logServer;
-        private static FileInfo _logEditor;
+        
+        private static FileInfo _logWayfarerPrint;
+        private static FileInfo _logWayfarerEditor;
         
         
         private static Queue<PrintJob> _printQueue = new Queue<PrintJob>();
 
         private static Stopwatch _sw;
         private static Timer _timer;
+
+        private static bool _instantiated = false;
 
         static Log()
         {
@@ -49,8 +54,19 @@ namespace Wayfarer.Utils.Debug
                        || fi.Name == "ui.log"
                        || fi.Name == "database.log"
                        || fi.Name == "console.log"
-                       || fi.Name == "server.log"
-                       || fi.Name == "editor.log")
+                       || fi.Name == "server.log")
+                {
+                    fi.Delete();
+                }
+            }
+
+            _wayfarerDir = Directory.CreateDirectory(Paths.WayfarerLogPath);
+            
+            FileInfo[] wayfarerFiles = _wayfarerDir.GetFiles();
+            foreach (FileInfo fi in wayfarerFiles)
+            {
+                if (fi.Name == "___event.log"
+                    || fi.Name == "editor.log")
                 {
                     fi.Delete();
                 }
@@ -64,7 +80,9 @@ namespace Wayfarer.Utils.Debug
             _logDb = new FileInfo(Path.Combine(Paths.LogPath, "database.log"));
             _logConsole = new FileInfo(Path.Combine(Paths.LogPath, "console.log"));
             _logServer = new FileInfo(Path.Combine(Paths.LogPath, "server.log"));
-            _logEditor = new FileInfo(Path.Combine(Paths.LogPath, "editor.log"));
+            
+            _logWayfarerPrint = new FileInfo(Path.Combine(Paths.WayfarerLogPath, "___event.log"));
+            _logWayfarerEditor = new FileInfo(Path.Combine(Paths.WayfarerLogPath, "editor.log"));
 
             _logPrint.Create().Dispose();
             _logError.Create().Dispose();
@@ -74,7 +92,9 @@ namespace Wayfarer.Utils.Debug
             _logDb.Create().Dispose();
             _logConsole.Create().Dispose();
             _logServer.Create().Dispose();
-            _logEditor.Create().Dispose();
+
+            _logWayfarerPrint.Create().Dispose();
+            _logWayfarerEditor.Create().Dispose();
 
             _sw = new Stopwatch();
             _timer = new Timer();
@@ -84,6 +104,79 @@ namespace Wayfarer.Utils.Debug
             _timer.Interval = 100;
             _timer.Elapsed += delegate { ProcessQueue(); };
             _timer.Enabled = true;
+
+            _instantiated = true;
+        }
+        
+        public static void Instantiate()
+        {
+            if (!_instantiated)
+            {
+                _logDir = Directory.CreateDirectory(Paths.LogPath);
+
+                FileInfo[] files = _logDir.GetFiles();
+                foreach (FileInfo fi in files)
+                {
+                    if (      fi.Name == "___event.log"
+                           || fi.Name == "__error.log"
+                           || fi.Name == "_crash.log"
+                           || fi.Name == "network.log"
+                           || fi.Name == "ui.log"
+                           || fi.Name == "database.log"
+                           || fi.Name == "console.log"
+                           || fi.Name == "server.log")
+                    {
+                        fi.Delete();
+                    }
+                }
+    
+                _wayfarerDir = Directory.CreateDirectory(Paths.WayfarerLogPath);
+                
+                FileInfo[] wayfarerFiles = _wayfarerDir.GetFiles();
+                foreach (FileInfo fi in wayfarerFiles)
+                {
+                    if (fi.Name == "___event.log"
+                        || fi.Name == "editor.log")
+                    {
+                        fi.Delete();
+                    }
+                }
+    
+                _logPrint = new FileInfo(Path.Combine(Paths.LogPath, "___event.log"));
+                _logError = new FileInfo(Path.Combine(Paths.LogPath, "__error.log"));
+                _logCrash = new FileInfo(Path.Combine(Paths.LogPath, "_crash.log"));
+                _logNetwork = new FileInfo(Path.Combine(Paths.LogPath, "network.log"));
+                _logUi = new FileInfo(Path.Combine(Paths.LogPath, "ui.log"));
+                _logDb = new FileInfo(Path.Combine(Paths.LogPath, "database.log"));
+                _logConsole = new FileInfo(Path.Combine(Paths.LogPath, "console.log"));
+                _logServer = new FileInfo(Path.Combine(Paths.LogPath, "server.log"));
+                
+                _logWayfarerPrint = new FileInfo(Path.Combine(Paths.WayfarerLogPath, "___event.log"));
+                _logWayfarerEditor = new FileInfo(Path.Combine(Paths.WayfarerLogPath, "editor.log"));
+    
+                _logPrint.Create().Dispose();
+                _logError.Create().Dispose();
+                _logCrash.Create().Dispose();
+                _logNetwork.Create().Dispose();
+                _logUi.Create().Dispose();
+                _logDb.Create().Dispose();
+                _logConsole.Create().Dispose();
+                _logServer.Create().Dispose();
+    
+                _logWayfarerPrint.Create().Dispose();
+                _logWayfarerEditor.Create().Dispose();
+    
+                _sw = new Stopwatch();
+                _timer = new Timer();
+                _sw.Start();
+    
+                // TODO: Consider creating a more sophisticated iterator for the Database methods
+                _timer.Interval = 100;
+                _timer.Elapsed += delegate { ProcessQueue(); };
+                _timer.Enabled = true;
+
+                _instantiated = true;
+            }
         }
         
         
@@ -168,8 +261,8 @@ namespace Wayfarer.Utils.Debug
             string editor = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + value;
             string print = _sw.ElapsedMilliseconds + " | " + ParseFilePathToTypeName(path) + "." + method + " | " + "EDITOR: " + value;
             
-            _printQueue.Enqueue(new PrintJob(_logPrint.FullName, print));
-            _printQueue.Enqueue(new PrintJob(_logEditor.FullName, editor));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerPrint.FullName, print));
+            _printQueue.Enqueue(new PrintJob(_logWayfarerEditor.FullName, editor));
             
             if (gdPrint)
             {
