@@ -12,6 +12,7 @@ margin_left = -400.0
 margin_top = -300.0
 margin_right = 400.0
 margin_bottom = 300.0
+rect_min_size = Vector2( 600, 400 )
 window_title = "Create New Node"
 resizable = true
 script = ExtResource( 1 )
@@ -54,7 +55,7 @@ margin_bottom = 536.0
 rect_min_size = Vector2( 225, 0 )
 size_flags_vertical = 3
 
-[node name="Control2" type="Control" parent="Control/VBox/Content/Sidepanel"]
+[node name="Filler" type="Control" parent="Control/VBox/Content/Sidepanel"]
 margin_right = 225.0
 margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
@@ -66,7 +67,7 @@ margin_bottom = 266.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="Control/VBox/Content/Sidepanel"]
+[node name="Filler2" type="Control" parent="Control/VBox/Content/Sidepanel"]
 margin_top = 270.0
 margin_right = 225.0
 margin_bottom = 275.0
@@ -85,38 +86,55 @@ margin_right = 780.0
 margin_bottom = 536.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="Filler" type="Control" parent="Control/VBox/Content/Main"]
+margin_right = 543.0
 
 [node name="Top" type="Control" parent="Control/VBox/Content/Main"]
+editor/display_folded = true
+margin_top = 10.0
 margin_right = 543.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 25 )
 size_flags_horizontal = 3
 
 [node name="HBox" type="HBoxContainer" parent="Control/VBox/Content/Main/Top"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 10.0
-margin_bottom = -10.0
 
 [node name="LineEdit" type="LineEdit" parent="Control/VBox/Content/Main/Top/HBox"]
 margin_right = 468.0
-margin_bottom = 24.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 caret_blink = true
 
 [node name="Button" type="Button" parent="Control/VBox/Content/Main/Top/HBox"]
 margin_left = 472.0
 margin_right = 543.0
-margin_bottom = 24.0
+margin_bottom = 25.0
 text = "Favourite"
 
 [node name="Nodes" type="Tree" parent="Control/VBox/Content/Main"]
-margin_top = 44.0
+margin_top = 45.0
 margin_right = 543.0
-margin_bottom = 536.0
+margin_bottom = 451.0
 rect_min_size = Vector2( 225, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Bottom" type="Control" parent="Control/VBox/Content/Main"]
+margin_top = 461.0
+margin_right = 543.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 0, 75 )
+
+[node name="Description" type="RichTextLabel" parent="Control/VBox/Content/Main/Bottom"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Description here"
 
 [node name="Bottom" type="HBoxContainer" parent="Control/VBox"]
 margin_top = 540.0

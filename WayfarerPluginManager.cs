@@ -34,7 +34,14 @@ namespace Wayfarer
         {
             base.DisablePlugin();
 
-            RemoveOldEditorMenubar();
+            try
+            {
+                RemoveOldEditorMenubar();
+            }
+            catch (Exception e)
+            {
+                Log.Editor("Couldn't remove the OLD EditorMenuBar", e, true);
+            }
         }
 
         private void AddCustomTypes()
@@ -54,22 +61,18 @@ namespace Wayfarer
             Texture nodeIcon = GD.Load<Texture>("res://Addons/Wayfarer/Assets/Icons/resource.png");
             AddCustomType("WayfarerNodeData", "Resource", nodeScript, nodeIcon);
 
-            Script nodeListScript = GD.Load<Script>("res://Addons/Wayfarer/Core/Plugin/Resources/WayfarerNodeList.cs");
+            Script nodeListScript = GD.Load<Script>("res://Addons/Wayfarer/Core/Plugin/Resources/WayfarerNodeDatabase.cs");
             Texture nodeListIcon = GD.Load<Texture>("res://Addons/Wayfarer/Assets/Icons/wayfarerNodes.png");
-            AddCustomType("WayfarerNodeList", "Resource", nodeListScript, nodeListIcon);
+            AddCustomType("WayfarerNodeDatabase", "Resource", nodeListScript, nodeListIcon);
         }
 
         private void AddCustomControlsToEditor()
         {
-            //RemoveOldEditorMenubar();
-            //RemoveOldTopRightPanel();
-            
             PackedScene toolbarScene = GD.Load<PackedScene>("res://Addons/Wayfarer/Assets/Scenes/Controls/EditorMenuBar.tscn");
             _editorMenuBar = (EditorMenuBar)toolbarScene.Instance();
             _editorMenuBar.SetEditorInterface(GetEditorInterface());
             _editorMenuBar.SetPluginManager(this);
             AddControlToContainer(CustomControlContainer.CanvasEditorMenu, _editorMenuBar);
-
         }
 
         private void RemoveOldEditorMenubar()
@@ -86,7 +89,7 @@ namespace Wayfarer
                     }
                     catch (Exception e)
                     {
-                        Log.Editor("Tried to remove EditorMenuBar from Toolbar, but couldn't", true);
+                        Log.Editor("Tried to remove EditorMenuBar from Toolbar, but couldn't", e, true);
                     }
                     try
                     {
@@ -95,7 +98,7 @@ namespace Wayfarer
                     }
                     catch (Exception e)
                     {
-                        Log.Editor("Tried to QueueFree() EditorMenuBar from Toolbar, but couldn't", true);
+                        Log.Editor("Tried to QueueFree() EditorMenuBar from Toolbar, but couldn't", e, true);
                     }
                     return;
                 }
@@ -111,14 +114,22 @@ namespace Wayfarer
         private void RemoveCustomResources()
         {
             RemoveCustomType("WayfarerNodeData");
-            RemoveCustomType("WayfarerNodeList");
+            RemoveCustomType("WayfarerNodeDatabase");
         }
 
         private void RemoveCustomControlsFromEditor()
         {
-            RemoveControlFromContainer(CustomControlContainer.CanvasEditorMenu, _editorMenuBar);
+            try
+            {
+                RemoveControlFromContainer(CustomControlContainer.CanvasEditorMenu, _editorMenuBar);
 
-            _editorMenuBar.QueueFree();
+                _editorMenuBar.QueueFree();
+            }
+            catch (Exception e)
+            {
+                Log.Editor("Couldn't remove the EditorMenuBar", e, true);
+            }
+            
         }
     }
 }

@@ -74,7 +74,7 @@
     <Compile Include="Core\Plugin\AddNodeDialog.cs" />
     <Compile Include="Core\Plugin\EditorMenuBar.cs" />
     <Compile Include="Core\Plugin\Resources\WayfarerNodeData.cs" />
-    <Compile Include="Core\Plugin\Resources\WayfarerNodeList.cs" />
+    <Compile Include="Core\Plugin\Resources\WayfarerNodeDatabase.cs" />
     <Compile Include="Core\Systems\Cameras\Camera.cs" />
     <Compile Include="Core\Systems\Cameras\FreeCamera.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />

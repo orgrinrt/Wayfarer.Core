@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
 using Wayfarer.Utils.Attributes;
 
 namespace Wayfarer.Utils.Helpers
@@ -36,9 +37,42 @@ namespace Wayfarer.Utils.Helpers
         {
             return self.GetChild(idx) as T;
         }
+
+        public static T GetChildOfType<T>(this Node self) where T : Node
+        {
+            Node[] children = self.GetChildrenRecursive();
+
+            foreach (Node node in children)
+            {
+                if (node is T)
+                {
+                    return node as T;
+                }
+            }
+
+            return null;
+        }
+
+        public static T[] GetChildrenOfType<T>(this Node self) where T : Node // we might consider using Godot.Array instead of T[]
+        {
+            Node[] children = self.GetChildrenRecursive();
+            List<T> matches = new List<T>();
+
+            foreach (Node node in children)
+            {
+                if (node is T t)
+                {
+                    matches.Add(t);
+                }
+            }
+
+            return matches.ToArray();
+        }
         
         public static void ReParent(this Godot.Node child, Godot.Node newParent)
         {
+            // NOTE: Currently it seems to do it so that it fires _EnterTree and _Ready again when its reparented...
+            // maybe we don't want that?
             child.GetParent().RemoveChild(child);
             newParent.AddChild(child);
         }
