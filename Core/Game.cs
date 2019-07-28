@@ -55,7 +55,7 @@ namespace Wayfarer.Core
             {
                 _self = this;
             }
-            
+            Log.Instantiate();
             Log.Print("Initializing game");
             
             SetReferencesToEssentialNodes();

@@ -114,8 +114,10 @@
     <Compile Include="Core\Utils\Physics\CollisionGroup.cs" />
     <Compile Include="Core\Utils\Physics\CollisionLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WayfarerPluginManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="plugin.cfg" />
     <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,6 @@
-﻿using Godot;
+﻿using System;
+using Godot;
+using Environment = Godot.Environment;
 using Path = System.IO.Path;
 
 namespace Wayfarer.Utils.Files
@@ -48,6 +50,14 @@ namespace Wayfarer.Utils.Files
         
         
         
+        // WAYFARER
+
+        public static string WayfarerPath => GetWayfarerPath();
+
+        public static string WayfarerLogPath = Path.Combine(WayfarerPath, "Logs");
+        
+        
+        
         private static string GetUserPath()
         {
             /*
@@ -65,6 +75,22 @@ namespace Wayfarer.Utils.Files
             }
             */
             return OS.GetUserDataDir();
+        }
+
+        private static string GetWayfarerPath()
+        {
+            if (System.Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                return Path.Combine("~", ".local", "share", "Wayfarer");
+            }
+            else if (System.Environment.OSVersion.Platform == PlatformID.MacOSX)
+            {
+                return Path.Combine("~", "Library", "Application Support", "Wayfarer");
+            }
+            else
+            {
+                return Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "Wayfarer");
+            }
         }
 
         public static string Combine(string a, string b, bool isGodotResPath = true)
