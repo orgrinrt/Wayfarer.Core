@@ -29,8 +29,17 @@ namespace Wayfarer.Core.Plugin
             PackedScene addNodeDialogScene = GD.Load<PackedScene>("res://Addons/Wayfarer/Assets/Scenes/Controls/AddNodeDialog.tscn");
             _addNodeDialog = (AddNodeDialog)addNodeDialogScene.Instance();
             AddChild(_addNodeDialog);
+            
         }
+        
 
+        public override void _ExitTree()
+        {
+            Log.Editor("Going to QueueFree() the AddNodeDialog", true);
+            AddNodeDialog dialog = this.GetChildOfType<AddNodeDialog>();
+            dialog.QueueFree();
+        }
+        
         private void OnButtonPressed()
         {
             EditorSelection selection = _editorInterface.GetSelection();

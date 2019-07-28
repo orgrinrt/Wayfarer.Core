@@ -11,5 +11,6 @@ __meta__ = {
 }
 _nodeName = "Manager"
 _parentName = "WayfarerNode"
-_isAScene = false
+_isScene = false
+_description = null
 _icon = ExtResource( 2 )
