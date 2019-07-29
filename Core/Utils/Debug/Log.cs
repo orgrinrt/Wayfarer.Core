@@ -268,6 +268,7 @@ namespace Wayfarer.Utils.Debug
             {
                 GD.Print(print);
             }
+            
         }
         
         public static void Editor(string value, Exception e, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
