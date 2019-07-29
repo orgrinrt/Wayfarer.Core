@@ -70,6 +70,7 @@
     <Compile Include="Core\Game.cs" />
     <Compile Include="Core\GameContext.cs" />
     <Compile Include="Core\GameState.cs" />
+    <Compile Include="Core\Gd.cs" />
     <Compile Include="Core\Nodes\WayfarerNode.cs" />
     <Compile Include="Core\Plugin\AddNodeDialog.cs" />
     <Compile Include="Core\Plugin\EditorMenuBar.cs" />

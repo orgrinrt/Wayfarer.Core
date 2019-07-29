@@ -68,6 +68,7 @@ namespace Wayfarer
 
         private void AddCustomControlsToEditor()
         {
+            
             PackedScene toolbarScene = GD.Load<PackedScene>("res://Addons/Wayfarer/Assets/Scenes/Controls/EditorMenuBar.tscn");
             _editorMenuBar = (EditorMenuBar)toolbarScene.Instance();
             _editorMenuBar.SetEditorInterface(GetEditorInterface());
