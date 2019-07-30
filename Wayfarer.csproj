@@ -103,6 +103,7 @@
     <Compile Include="Core\Utils\Debug\Log.cs" />
     <Compile Include="Core\Utils\Debug\LoggingLevel.cs" />
     <Compile Include="Core\Utils\Files\Paths.cs" />
+    <Compile Include="Core\Utils\Helpers\Arrays.cs" />
     <Compile Include="Core\Utils\Helpers\Bytes.cs" />
     <Compile Include="Core\Utils\Helpers\Color.cs" />
     <Compile Include="Core\Utils\Helpers\Direction.cs" />

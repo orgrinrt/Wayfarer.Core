@@ -1,9 +1,8 @@
 ﻿using System;
 using Godot;
-using Environment = Godot.Environment;
 using Path = System.IO.Path;
 
-namespace Wayfarer.Utils.Files
+namespace Wayfarer.Core.Utils.Files
 {
     public class Paths
     {

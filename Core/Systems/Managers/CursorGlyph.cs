@@ -1,4 +1,4 @@
-﻿namespace Wayfarer.Systems.Managers
+﻿namespace Wayfarer.Core.Systems.Managers
 {
     public enum CursorGlyph
     {

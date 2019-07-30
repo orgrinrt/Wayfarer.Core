@@ -1,12 +1,10 @@
-using System.Diagnostics;
 using Godot;
 using Godot.Collections;
-using Wayfarer.Core;
 using Wayfarer.Core.Constants;
-using Wayfarer.Utils.Debug;
-using Camera = Wayfarer.Systems.Cameras.Camera;
+using Wayfarer.Core.Utils.Debug;
+using Camera = Wayfarer.Core.Systems.Cameras.Camera;
 
-namespace Wayfarer.Systems.Managers
+namespace Wayfarer.Core.Systems.Managers
 {
     public class CameraManager : Manager
     {

@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace Wayfarer.Utils.Helpers
+namespace Wayfarer.Core.Utils.Helpers
 {
     public static class Vectors
     {

@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using Wayfarer.Utils.Debug;
+﻿using Wayfarer.Core.Utils.Debug;
 
-namespace Wayfarer.Console
+namespace Wayfarer.Core.Console
 {
     public class Console
     {

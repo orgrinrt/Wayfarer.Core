@@ -1,5 +1,6 @@
 ﻿using Godot;
 using Godot.Collections;
+using Wayfarer.Core.Plugin.Resources;
 
 namespace Wayfarer.Core.Plugin.Resources
 {

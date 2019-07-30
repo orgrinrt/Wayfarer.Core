@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Wayfarer.Systems.Cameras
+namespace Wayfarer.Core.Systems.Cameras
 {
     public class FreeCamera : Camera
     {

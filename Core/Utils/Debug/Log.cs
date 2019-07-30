@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Godot;
-using Wayfarer.Utils.Files;
+using Wayfarer.Core.Utils.Files;
 using Directory = System.IO.Directory;
 using Path = System.IO.Path;
 using Timer = System.Timers.Timer;
 
-namespace Wayfarer.Utils.Debug
+namespace Wayfarer.Core.Utils.Debug
 {
     public static class Log
     {

@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using Godot;
+﻿using Godot;
 using Godot.Collections;
-using Wayfarer.Utils.Debug;
+using Wayfarer.Core.Utils.Debug;
 
 namespace Wayfarer.Core.Plugin.Resources
 {

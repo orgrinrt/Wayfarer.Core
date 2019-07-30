@@ -1,7 +1,7 @@
 ﻿using Godot;
 using Wayfarer.Core.Constants;
 
-namespace Wayfarer.Systems.Cameras
+namespace Wayfarer.Core.Systems.Cameras
 {
     public class Camera : Camera2D
     {

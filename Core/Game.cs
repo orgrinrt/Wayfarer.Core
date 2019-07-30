@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Godot;
 using Wayfarer.Core.Constants;
-using Wayfarer.Systems.Managers;
-using Wayfarer.Utils.Debug;
+using Wayfarer.Core.Systems.Managers;
+using Wayfarer.Core.Utils.Debug;
 
 namespace Wayfarer.Core
 {

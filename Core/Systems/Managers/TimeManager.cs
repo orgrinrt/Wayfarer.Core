@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Godot;
+using Wayfarer.Core.Nodes;
 
-namespace Wayfarer.Systems.Managers
+namespace Wayfarer.Core.Systems.Managers
 {
     public class TimeManager : WayfarerNode
     {

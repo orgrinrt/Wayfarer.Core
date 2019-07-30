@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Wayfarer.Utils.Coroutine
+namespace Wayfarer.Core.Utils.Coroutine
 {
     /// <summary>
     /// A handle to a (potentially running) coroutine.

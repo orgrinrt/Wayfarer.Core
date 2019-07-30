@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Godot;
-using Wayfarer.Core;
-using Wayfarer.UI.Screens;
-using Wayfarer.Utils.Debug;
+using Wayfarer.Core.UI.Screens;
+using Wayfarer.Core.Utils.Debug;
 
-namespace Wayfarer.Systems.Managers
+namespace Wayfarer.Core.Systems.Managers
 {
     public class SceneManager : Manager
     {

@@ -1,4 +1,4 @@
-﻿namespace Wayfarer.Utils.Debug
+﻿namespace Wayfarer.Core.Utils.Debug
 {
     public enum LoggingLevel
     {

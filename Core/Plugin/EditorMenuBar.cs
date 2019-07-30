@@ -1,10 +1,9 @@
 #if TOOLS
 
-using System;
 using Godot;
-using Wayfarer.Utils.Attributes;
-using Wayfarer.Utils.Debug;
-using Wayfarer.Utils.Helpers;
+using Wayfarer.Core.Utils.Attributes;
+using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Core.Utils.Helpers;
 using Array = Godot.Collections.Array;
 
 namespace Wayfarer.Core.Plugin
@@ -14,11 +13,11 @@ namespace Wayfarer.Core.Plugin
     {
         [Get("HBox/AddNodeMenu/Button")] private Button _addNodeButton;
     
-        private Wayfarer.Core.Plugin.AddNodeDialog _addNodeDialog;
+        private global::Wayfarer.Core.Plugin.AddNodeDialog _addNodeDialog;
         private EditorInterface _editorInterface;
         private WayfarerPluginManager _pluginManager;
 
-        public AddNodeDialog AddNodeDialog => _addNodeDialog;
+        public global::Wayfarer.Core.Plugin.AddNodeDialog AddNodeDialog => _addNodeDialog;
     
         public override void _Ready()
         {
@@ -27,7 +26,7 @@ namespace Wayfarer.Core.Plugin
             _addNodeButton.Connect("button_up", this, nameof(OnButtonPressed));
 
             PackedScene addNodeDialogScene = GD.Load<PackedScene>("res://Addons/Wayfarer/Assets/Scenes/Controls/AddNodeDialog.tscn");
-            _addNodeDialog = (AddNodeDialog)addNodeDialogScene.Instance();
+            _addNodeDialog = (global::Wayfarer.Core.Plugin.AddNodeDialog)addNodeDialogScene.Instance();
             AddChild(_addNodeDialog);
             
         }
@@ -36,7 +35,7 @@ namespace Wayfarer.Core.Plugin
         public override void _ExitTree()
         {
             Log.Editor("Going to QueueFree() the AddNodeDialog", true);
-            AddNodeDialog dialog = this.GetChildOfType<AddNodeDialog>();
+            global::Wayfarer.Core.Plugin.AddNodeDialog dialog = this.GetChildOfType<global::Wayfarer.Core.Plugin.AddNodeDialog>();
             dialog.QueueFree();
         }
         
