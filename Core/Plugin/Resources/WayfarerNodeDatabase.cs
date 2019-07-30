@@ -1,7 +1,7 @@
 ﻿using Godot;
 using Godot.Collections;
 
-namespace Wayfarer.Core.Plugin.Resources
+namespace Shardwielders.Addons.Wayfarer.Core.Plugin.Resources
 {
     public class WayfarerNodeDatabase : Resource
     {

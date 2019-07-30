@@ -3,8 +3,8 @@
 using System;
 using Godot;
 using Wayfarer.Core.Plugin;
-using Wayfarer.Utils.Debug;
-using Wayfarer.Utils.Helpers;
+using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Core.Utils.Helpers;
 using Texture = Godot.Texture;
 
 namespace Wayfarer
@@ -18,6 +18,7 @@ namespace Wayfarer
         public override void _EnterTree()
         {
             Log.Instantiate();
+            AddAutoLoads();
             AddCustomTypes();
             AddCustomResources();
             AddCustomControlsToEditor();
@@ -25,6 +26,7 @@ namespace Wayfarer
 
         public override void _ExitTree()
         {
+            RemoveAutoLoads();
             RemoveCustomTypes();
             RemoveCustomResources();
             RemoveCustomControlsFromEditor();
@@ -42,6 +44,12 @@ namespace Wayfarer
             {
                 Log.Editor("Couldn't remove the OLD EditorMenuBar", e, true);
             }
+        }
+
+        private void AddAutoLoads()
+        {
+            AddAutoloadSingleton("CS", "res://Addons/Wayfarer/Core/Gd.cs");
+            AddAutoloadSingleton("Log", "res://Addons/Wayfarer/GDInterfaces/log.gd");
         }
 
         private void AddCustomTypes()
@@ -74,6 +82,12 @@ namespace Wayfarer
             _editorMenuBar.SetEditorInterface(GetEditorInterface());
             _editorMenuBar.SetPluginManager(this);
             AddControlToContainer(CustomControlContainer.CanvasEditorMenu, _editorMenuBar);
+        }
+
+        private void RemoveAutoLoads()
+        {
+            RemoveAutoloadSingleton("CS");
+            RemoveAutoloadSingleton("Log");
         }
 
         private void RemoveOldEditorMenubar()

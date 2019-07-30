@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Godot;
-using Godot.Collections;
-using Wayfarer.Utils.Attributes;
+using Wayfarer.Core.Nodes;
+using Wayfarer.Core.Utils.Attributes;
+using Wayfarer.Core.Utils.Debug;
 
-namespace Wayfarer.Utils.Helpers
+namespace Wayfarer.Core.Utils.Helpers
 {
     public static class Nodes
     {
@@ -116,7 +118,7 @@ namespace Wayfarer.Utils.Helpers
                 parentCandidate = parentCandidate.GetParent();
             }
             
-            Debug.Log.Error("Couldn't find a parent with type " + typeof(T) + " to node " + node.Name, true);
+            Log.Error("Couldn't find a parent with type " + typeof(T) + " to node " + node.Name, true);
 
             return null;
         }
@@ -137,7 +139,7 @@ namespace Wayfarer.Utils.Helpers
                 }
             }
 
-            Debug.Log.Error("Couldn't find a theme for control: " + control.Name, true);
+            Log.Error("Couldn't find a theme for control: " + control.Name, true);
             return null;
         }
     }

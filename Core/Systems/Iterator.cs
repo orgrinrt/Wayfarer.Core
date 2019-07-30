@@ -1,7 +1,7 @@
-using Godot;
-using Wayfarer.Utils.Coroutine;
+using Wayfarer.Core.Nodes;
+using Wayfarer.Core.Utils.Coroutine;
 
-namespace Wayfarer.Systems
+namespace Wayfarer.Core.Systems
 {
     public class Iterator : WayfarerNode
     {

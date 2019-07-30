@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using Godot;
+﻿using Godot;
 
-namespace Wayfarer.Utils.Localization
+namespace Wayfarer.Core.Utils.Localization
 {
     public class Lang
     {

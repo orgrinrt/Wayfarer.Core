@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace Wayfarer.Console
+namespace Wayfarer.Core.Console
 {
     public class ConsoleBridge : Control
     {

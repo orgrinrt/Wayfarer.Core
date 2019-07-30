@@ -1,7 +1,7 @@
 #if TOOLS
 
 using Godot;
-using Wayfarer.Utils.Debug;
+using Wayfarer.Core.Utils.Debug;
 
 namespace Wayfarer.Core.Plugin
 {

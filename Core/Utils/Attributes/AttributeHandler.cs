@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
 using Godot;
-using Wayfarer.Utils.Debug;
+using Wayfarer.Core.Utils.Debug;
 
-namespace Wayfarer.Utils.Attributes
+namespace Wayfarer.Core.Utils.Attributes
 {
     public static class AttributeHandler
     {

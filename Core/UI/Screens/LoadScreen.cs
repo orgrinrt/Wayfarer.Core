@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace Wayfarer.UI.Screens
+namespace Wayfarer.Core.UI.Screens
 {
     public class LoadScreen : Control
     {

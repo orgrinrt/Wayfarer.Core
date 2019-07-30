@@ -1,7 +1,6 @@
 using Godot;
-using Wayfarer.Core;
 
-namespace Wayfarer.Systems.Managers
+namespace Wayfarer.Core.Systems.Managers
 {
     public class MusicManager : Node
     {

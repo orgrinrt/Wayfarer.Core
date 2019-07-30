@@ -1,4 +1,4 @@
-﻿namespace Wayfarer.Systems
+﻿namespace Wayfarer.Core.Systems
 {
     public enum TimeScaleState
     {

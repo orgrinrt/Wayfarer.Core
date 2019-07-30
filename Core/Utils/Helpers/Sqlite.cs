@@ -1,10 +1,10 @@
 ﻿using System;
 using Godot;
 using Godot.Collections;
-using Wayfarer.Utils.Debug;
-using Wayfarer.Utils.Files;
+using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Core.Utils.Files;
 
-namespace Wayfarer.Utils.Helpers
+namespace Wayfarer.Core.Utils.Helpers
 {
     public static class Sqlite
     {
@@ -16,7 +16,7 @@ namespace Wayfarer.Utils.Helpers
             {
                 if (dir.ChangeDir(dirPath) != Error.Ok)
                 {
-                    Debug.Log.Error("The directory (" + dirPath + ") didn't exist", true);
+                    Log.Error("The directory (" + dirPath + ") didn't exist", true);
                     // error switch here
                     filePaths = null;
                     return false;
@@ -41,7 +41,7 @@ namespace Wayfarer.Utils.Helpers
         
                                 if (Log.LoggingLevel > LoggingLevel.Default)
                                 {
-                                    Debug.Log.Print("Directory (" + dirPath + ") contained a child directory (" + currFolder + "), loading it too (recursive=true)", true);
+                                    Log.Print("Directory (" + dirPath + ") contained a child directory (" + currFolder + "), loading it too (recursive=true)", true);
                                 }
                                 
                                 if (TryGetSqlFilesInDirectory(currFolder, out recursiveResult, true))
@@ -53,7 +53,7 @@ namespace Wayfarer.Utils.Helpers
                                 }
                                 else
                                 {
-                                    Debug.Log.Error("Tried to do a recursive search on sql files but there were no sql files", true);
+                                    Log.Error("Tried to do a recursive search on sql files but there were no sql files", true);
                                 }
                             }
                         }
@@ -65,13 +65,13 @@ namespace Wayfarer.Utils.Helpers
                             }
                             else if (Log.LoggingLevel > LoggingLevel.Default)
                             {
-                                Debug.Log.Print("Found a file (" + currentItemPath + "), but it wasn't an .sql file, not including it", true);
+                                Log.Print("Found a file (" + currentItemPath + "), but it wasn't an .sql file, not including it", true);
                             }
                         }
                         else
                         {
                             //Debug.Log.Database("Files.GetFilesInDirectory()", "Tried to read a file (" + currentItemPath + ") but it didn't exist (this can cause unexpected crashes)", true);
-                            Debug.Log.Database("Tried to read a file (" + currentItemPath + ") but it didn't exist (this can cause unexpected crashes)", true);
+                            Log.Database("Tried to read a file (" + currentItemPath + ") but it didn't exist (this can cause unexpected crashes)", true);
                         }
                         currentItemName = dir.GetNext();
                     }
@@ -85,7 +85,7 @@ namespace Wayfarer.Utils.Helpers
                 
                 if (Log.LoggingLevel > LoggingLevel.Default)
                 {
-                    Debug.Log.Print("Total amount of .sql files found&processed: " + filePaths.Count + "(" + dirPath + ")", true);
+                    Log.Print("Total amount of .sql files found&processed: " + filePaths.Count + "(" + dirPath + ")", true);
                 }
                 
                 return true;
