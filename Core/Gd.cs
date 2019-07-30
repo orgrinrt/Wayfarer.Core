@@ -1,6 +1,8 @@
 ﻿using Godot;
+using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Core.Utils.Helpers;
 
-namespace Wayfarer.Utils.Debug
+namespace Shardwielders.Addons.Wayfarer.Core
 {
     #if TOOLS
     [Tool]
@@ -16,6 +18,11 @@ namespace Wayfarer.Utils.Debug
         {
             Log.Print("HAHAHA", true);
             
+        }
+
+        public Godot.Collections.Array GetChildrenRecursive(Node node)
+        {
+            return node.GetChildrenRecursive().ToArray();
         }
     }
 }
