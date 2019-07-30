@@ -5,7 +5,9 @@ tool
 func _ready():
 	pass
 	
-func Print(var string : String, var gdPrint : bool = false):
-	var csLog = get_node("/root/CS");
-	csLog.call("Print", string, gdPrint);
+static func Print(var string : String, var gdPrint : bool = false):
+	var cs_log = load("res://Addons/Wayfarer/Core/Gd.cs");
+	var cs_instance = cs_log.new();
+	cs_instance.call("Print", string, gdPrint);
+	cs_instance.queue_free();
 	pass
