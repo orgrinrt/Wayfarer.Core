@@ -3,6 +3,7 @@ using Godot;
 using Wayfarer.Core.Constants;
 using Wayfarer.Core.Systems.Managers;
 using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Core.Utils.Files;
 
 namespace Wayfarer.Core
 {
@@ -55,8 +56,9 @@ namespace Wayfarer.Core
             {
                 _self = this;
             }
-            Log.Instantiate();
-            Log.Print("Initializing game");
+            Log.Initialize();
+            Directories.Initialize();
+            Log.Print("Initializing game", true);
             
             SetReferencesToEssentialNodes();
         }
