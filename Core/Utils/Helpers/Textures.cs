@@ -2,7 +2,7 @@
 
 namespace Wayfarer.Core.Utils.Helpers
 {
-    public static class Texture
+    public static class Textures
     {
         public static Vector2 TexturePixelSizeToScale(Vector2 sourceSize, int targetHeight, int targetWidth)
         {
