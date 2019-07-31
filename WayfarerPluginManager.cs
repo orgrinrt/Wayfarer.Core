@@ -48,8 +48,7 @@ namespace Wayfarer
 
         private void AddAutoLoads()
         {
-            AddAutoloadSingleton("CS", "res://Addons/Wayfarer/Core/Gd.cs");
-            AddAutoloadSingleton("Log", "res://Addons/Wayfarer/GDInterfaces/log.gd");
+            //AddAutoloadSingleton("CS", "res://Addons/Wayfarer/Core/Gd.cs");
         }
 
         private void AddCustomTypes()
@@ -86,8 +85,7 @@ namespace Wayfarer
 
         private void RemoveAutoLoads()
         {
-            RemoveAutoloadSingleton("CS");
-            RemoveAutoloadSingleton("Log");
+            //RemoveAutoloadSingleton("CS");
         }
 
         private void RemoveOldEditorMenubar()
