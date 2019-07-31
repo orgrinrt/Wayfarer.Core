@@ -2,7 +2,7 @@
 
 Requires: Wayfarer.Overwatch
 
-Suggested: Wayfarer.Pebbles
+Suggested: Wayfarer.Pebbles, Wayfarer.EditorExplorer
 
 ---
 
