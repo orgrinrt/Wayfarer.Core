@@ -54,6 +54,8 @@ namespace Wayfarer.Core.Utils.Files
         public static string WayfarerPath => GetWayfarerPath();
 
         public static string WayfarerLogPath = Path.Combine(WayfarerPath, "Logs");
+
+        public static string PebblesPath = Path.Combine(WayfarerPath, "Pebbles");
         
         
         

@@ -1,6 +1,6 @@
 ﻿namespace Wayfarer.Core.Utils.Helpers
 {
-    public class Color
+    public class Colors
     {
         public static Godot.Color Red = new Godot.Color(0.5f, 0.0f, 0.0f);
         public static Godot.Color Blue = new Godot.Color(0.0f, 0.0f, 0.5f);

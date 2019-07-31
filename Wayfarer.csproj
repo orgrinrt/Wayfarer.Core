@@ -10,14 +10,14 @@
     <RootNamespace>Wayfarer</RootNamespace>
     <AssemblyName>Wayfarer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <OutputPath>$(ProjectDir)\..\..\.mono\temp\bin\$(Configuration)</OutputPath>
-    <BaseIntermediateOutputPath>$(ProjectDir)\..\..\.mono\temp\obj</BaseIntermediateOutputPath>
+    <OutputPath>..\..\.mono\temp\bin\$(Configuration)</OutputPath>
+    <BaseIntermediateOutputPath>..\..\.mono\temp\obj</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -72,10 +72,6 @@
     <Compile Include="Core\GameState.cs" />
     <Compile Include="Core\Gd.cs" />
     <Compile Include="Core\Nodes\WayfarerNode.cs" />
-    <Compile Include="Core\Plugin\AddNodeDialog.cs" />
-    <Compile Include="Core\Plugin\EditorMenuBar.cs" />
-    <Compile Include="Core\Plugin\Resources\WayfarerNodeData.cs" />
-    <Compile Include="Core\Plugin\Resources\WayfarerNodeDatabase.cs" />
     <Compile Include="Core\Systems\Cameras\Camera.cs" />
     <Compile Include="Core\Systems\Cameras\FreeCamera.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />
@@ -102,15 +98,18 @@
     <Compile Include="Core\Utils\Coroutine\CoroutineHandler.cs" />
     <Compile Include="Core\Utils\Debug\Log.cs" />
     <Compile Include="Core\Utils\Debug\LoggingLevel.cs" />
+    <Compile Include="Core\Utils\Debug\Wayfarer.cs" />
+    <Compile Include="Core\Utils\Debug\WayfarerException.cs" />
+    <Compile Include="Core\Utils\Files\Directories.cs" />
     <Compile Include="Core\Utils\Files\Paths.cs" />
     <Compile Include="Core\Utils\Helpers\Arrays.cs" />
     <Compile Include="Core\Utils\Helpers\Bytes.cs" />
-    <Compile Include="Core\Utils\Helpers\Color.cs" />
+    <Compile Include="Core\Utils\Helpers\Colors.cs" />
     <Compile Include="Core\Utils\Helpers\Direction.cs" />
     <Compile Include="Core\Utils\Helpers\Math.cs" />
     <Compile Include="Core\Utils\Helpers\Nodes.cs" />
     <Compile Include="Core\Utils\Helpers\Sqlite.cs" />
-    <Compile Include="Core\Utils\Helpers\Texture.cs" />
+    <Compile Include="Core\Utils\Helpers\Textures.cs" />
     <Compile Include="Core\Utils\Helpers\Vectors.cs" />
     <Compile Include="Core\Utils\Localization\Lang.cs" />
     <Compile Include="Core\Utils\Physics\CollisionGroup.cs" />

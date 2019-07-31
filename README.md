@@ -1,5 +1,11 @@
 # Wayfarer
 
+Requires: Wayfarer.Overwatch
+
+Suggested: Wayfarer.Pebbles, Wayfarer.EditorExplorer
+
+---
+
 Note: To make Godot "find" the actual plugin script (Plugin.cs in the root), you have to do a few things after cloning this:
 
 i : Exclude the Plugin.cs from the Wayfarer project
