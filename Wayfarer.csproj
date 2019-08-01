@@ -115,7 +115,7 @@
     <Compile Include="Core\Utils\Physics\CollisionGroup.cs" />
     <Compile Include="Core\Utils\Physics\CollisionLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WayfarerPluginManager.cs" />
+    <Compile Include="WayfarerCorePlugin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="plugin.cfg" />

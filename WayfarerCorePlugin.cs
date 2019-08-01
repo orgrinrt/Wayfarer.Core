@@ -10,7 +10,7 @@ using Texture = Godot.Texture;
 namespace Wayfarer
 {
     [Tool]
-    public class WayfarerPluginManager : EditorPlugin
+    public class WayfarerCorePlugin : EditorPlugin
     {
         public EditorInterface EditorInterface => GetEditorInterface();
 
