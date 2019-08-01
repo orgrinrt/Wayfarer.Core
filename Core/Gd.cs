@@ -2,7 +2,7 @@
 using Wayfarer.Core.Utils.Debug;
 using Wayfarer.Core.Utils.Helpers;
 
-namespace Shardwielders.Addons.Wayfarer.Core
+namespace Wayfarer.Core
 {
     #if TOOLS
     [Tool]
