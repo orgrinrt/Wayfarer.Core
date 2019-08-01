@@ -104,6 +104,10 @@ namespace Wayfarer.Core.Utils.Debug
                 _timer.Enabled = true;
 
                 _wayfarer = new Wayfarer();
+                if (!_wayfarer.Initialized)
+                {
+                    _wayfarer.Initialize();
+                }
                 
                 _initialized = true;
             }
@@ -344,7 +348,7 @@ namespace Wayfarer.Core.Utils.Debug
                     {
                         if (job.Crash && job.Exception == null)
                         {
-                            throw new WayfarerException("Log.ProcessQueue() Demanded that we crash (above message)");
+                            throw new Exception("Log.ProcessQueue() Demanded that we crash (above message)");
                         }
                         else
                         {
