@@ -234,7 +234,7 @@ namespace Wayfarer.Core.Utils.Debug
         public void Editor(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
         {
             string editor = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + value;
-            string print = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + "ERROR: " + value;
+            string print = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + "EDITOR: " + value;
             
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, print));
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, editor));
@@ -248,7 +248,7 @@ namespace Wayfarer.Core.Utils.Debug
         public void Editor(string value, Exception e, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
         {
             string editor = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + value;
-            string print = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + "ERROR: " + value;
+            string print = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + "EDITOR: " + value;
             
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, print));
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, ""));
@@ -258,6 +258,59 @@ namespace Wayfarer.Core.Utils.Debug
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, ""));
             
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, editor));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, ""));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, e.Message));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, "in: " + e.Source));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, e.StackTrace));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, ""));
+            
+            
+            if (gdPrint)
+            {
+                GD.Print(print);
+                GD.Print("");
+                GD.Print(e.Message);
+                GD.Print("in: " + e.Source);
+                GD.Print(e.StackTrace);
+                GD.Print("");
+            }
+        }
+        
+        public void EditorError(string value, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
+        {
+            string editor = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            string print = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + "ERROR: " + value;
+            
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, print));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logError.FullName, editor));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, print));
+            
+            if (gdPrint)
+            {
+                GD.Print(print);
+            }
+        }
+        
+        public void EditorError(string value, Exception e, bool gdPrint = false, [CallerMemberName]string method = "", [CallerFilePath] string path = "")
+        {
+            string editor = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + value;
+            string print = Log.Stopwatch.ElapsedMilliseconds + " | " + Log.ParseFilePathToTypeName(path) + "." + method + " | " + "ERROR: " + value;
+            
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, print));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, ""));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, e.Message));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, "in: " + e.Source));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, e.StackTrace));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logPrint.FullName, ""));
+            
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logError.FullName, editor));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logError.FullName, ""));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logError.FullName, e.Message));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logError.FullName, "in: " + e.Source));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logError.FullName, e.StackTrace));
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logError.FullName, ""));
+            
+            Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, print));
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, ""));
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, e.Message));
             Log.PrintQueue.Enqueue(new Log.PrintJob(_logEditor.FullName, "in: " + e.Source));

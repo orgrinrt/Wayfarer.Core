@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wayfarer.png-c8bd18cab0eb0cd965ff6f5e51259b3c.stex"
+path="res://.import/wayfarer.png-0b3ffcbd8065c484ce02faf74c0324ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/Wayfarer/Assets/Icons/wayfarer.png"
-dest_files=[ "res://.import/wayfarer.png-c8bd18cab0eb0cd965ff6f5e51259b3c.stex" ]
+source_file="res://Addons/Wayfarer.Core/Assets/Icons/wayfarer.png"
+dest_files=[ "res://.import/wayfarer.png-0b3ffcbd8065c484ce02faf74c0324ec.stex" ]
 
 [params]
 
