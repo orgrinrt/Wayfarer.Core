@@ -55,6 +55,11 @@ namespace Wayfarer.Core.Utils.Helpers
             return null;
         }
 
+        public static T GetNodeOfType<T>(this Node self) where T : Node
+        {
+            return self.GetChildOfType<T>();
+        }
+
         public static T[] GetChildrenOfType<T>(this Node self) where T : Node // we might consider using Godot.Array instead of T[]
         {
             Node[] children = self.GetChildrenRecursive();
