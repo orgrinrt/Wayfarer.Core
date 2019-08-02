@@ -25,6 +25,7 @@ namespace Wayfarer.Core.Utils.Debug
         private static FileInfo _logPrint;
         private static FileInfo _logError;
         private static FileInfo _logCrash;
+        private static FileInfo _logCrashDump;
         private static FileInfo _logNetwork;
         private static FileInfo _logUi;
         private static FileInfo _logDb;
@@ -35,11 +36,13 @@ namespace Wayfarer.Core.Utils.Debug
 
         private static Stopwatch _sw;
         private static Timer _timer;
+        private static int _tickRate = 50;
 
         private static bool _initialized = false;
 
         internal static Queue<PrintJob> PrintQueue => _printQueue;
         internal static Stopwatch Stopwatch => _sw;
+        internal static int TickRate => _tickRate;
 
         static Log()
         {
@@ -67,6 +70,7 @@ namespace Wayfarer.Core.Utils.Debug
                     if (      fi.Name == "___event.log"
                            || fi.Name == "__error.log"
                            || fi.Name == "_crash.log"
+                           || fi.Name == "_crash_dump.log"
                            || fi.Name == "network.log"
                            || fi.Name == "ui.log"
                            || fi.Name == "database.log"
@@ -80,6 +84,7 @@ namespace Wayfarer.Core.Utils.Debug
                 _logPrint = new FileInfo(Path.Combine(Paths.LogPath, "___event.log"));
                 _logError = new FileInfo(Path.Combine(Paths.LogPath, "__error.log"));
                 _logCrash = new FileInfo(Path.Combine(Paths.LogPath, "_crash.log"));
+                _logCrashDump = new FileInfo(Path.Combine(Paths.LogPath, "_crash_dump.log"));
                 _logNetwork = new FileInfo(Path.Combine(Paths.LogPath, "network.log"));
                 _logUi = new FileInfo(Path.Combine(Paths.LogPath, "ui.log"));
                 _logDb = new FileInfo(Path.Combine(Paths.LogPath, "database.log"));
@@ -94,12 +99,13 @@ namespace Wayfarer.Core.Utils.Debug
                 _logDb.Create().Dispose();
                 _logConsole.Create().Dispose();
                 _logServer.Create().Dispose();
+                
                 _sw = new Stopwatch();
                 _timer = new Timer();
                 _sw.Start();
     
                 // TODO: Consider creating a more sophisticated iterator for the Database methods
-                _timer.Interval = 100;
+                _timer.Interval = TickRate;
                 _timer.Elapsed += delegate { ProcessQueue(); };
                 _timer.Enabled = true;
 
@@ -115,8 +121,23 @@ namespace Wayfarer.Core.Utils.Debug
 
         public static void Immediate(string value)
         {
-            // TODO: This will be used in Exceptions and catch statements
-            // We want this to immediately write the last line before crash
+            _logCrashDump.Create().Dispose();
+            
+            using (StreamWriter writer = new StreamWriter(_logCrashDump.FullName, true))
+            {
+                writer.NewLine = Stopwatch.Elapsed +  " | dump below:";
+                writer.NewLine = "";
+                writer.WriteLine(value);
+                writer.NewLine = "";
+                writer.NewLine = "backlog (not processed yet):";
+
+                foreach (PrintJob job in _printQueue)
+                {
+                    writer.NewLine = job.Print;
+                }
+                
+                writer.Dispose();
+            }
         }
         
         public static void Simple(string value, bool gdPrint = false)
