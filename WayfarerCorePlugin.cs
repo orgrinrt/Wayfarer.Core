@@ -17,6 +17,8 @@ namespace Wayfarer
 
         public override void _EnterTree()
         {
+            EnablePlugin();
+            
             try
             {
                 Log.Initialize();
@@ -78,6 +80,15 @@ namespace Wayfarer
             RemoveCustomTypes();
             RemoveCustomResources();
             RemoveCustomControlsFromEditor();
+            DisablePlugin();
+        }
+
+        public override void _Notification(int what)
+        {
+            if (what is MainLoop.NotificationCrash)
+            {
+                Log.Wf.Immediate("Crash noticed by WayfarerCorePlugin");
+            }
         }
 
         private void AddAutoLoads()
