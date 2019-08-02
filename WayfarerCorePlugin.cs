@@ -2,6 +2,7 @@
 
 using System;
 using Godot;
+using Wayfarer.Core.Systems;
 using Wayfarer.Core.Utils.Debug;
 using Wayfarer.Core.Utils.Files;
 using Wayfarer.Core.Utils.Helpers;
@@ -86,8 +87,8 @@ namespace Wayfarer
 
         private void AddCustomTypes()
         {
-            Script wnScript = GD.Load<Script>("res://Addons/Wayfarer/Core/Nodes/WayfarerNode.cs");
-            Texture wnIcon = GD.Load<Texture>("res://Addons/Wayfarer/Assets/Icons/wayfarer.png");
+            Script wnScript = GD.Load<Script>("res://Addons/Wayfarer.Core/Core/Nodes/WayfarerNode.cs");
+            Texture wnIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/wayfarer.png");
             if (wnScript != null)
             {
                 if (wnIcon != null)
@@ -102,8 +103,8 @@ namespace Wayfarer
             }
             
 
-            Script managerScript = GD.Load<Script>("res://Addons/Wayfarer/Core/Systems/Managers/Manager.cs");
-            Texture managerIcon = GD.Load<Texture>("res://Addons/Wayfarer/Assets/Icons/manager.png");
+            Script managerScript = GD.Load<Script>("res://Addons/Wayfarer.Core/Core/Systems/Managers/Manager.cs");
+            Texture managerIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/manager.png");
             if (managerScript != null)
             {
                 if (managerIcon != null)

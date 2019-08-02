@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wayfarerNodes.png-9138481a0a13e8e73d416c306a6d8d38.stex"
+path="res://.import/wayfarerNodes.png-2aa369b7d1f411f7bb0a5eb0932d308a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/Wayfarer/Assets/Icons/wayfarerNodes.png"
-dest_files=[ "res://.import/wayfarerNodes.png-9138481a0a13e8e73d416c306a6d8d38.stex" ]
+source_file="res://Addons/Wayfarer.Core/Assets/Icons/wayfarerNodes.png"
+dest_files=[ "res://.import/wayfarerNodes.png-2aa369b7d1f411f7bb0a5eb0932d308a.stex" ]
 
 [params]
 

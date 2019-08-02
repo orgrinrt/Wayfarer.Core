@@ -13,6 +13,11 @@ namespace Wayfarer.Core
         {
             Log.Print(print, gdPrint);
         }
+        
+        public void PrintWf(string print, bool gdPrint = false)
+        {
+            Log.Wf.Print(print, gdPrint);
+        }
 
         public void Test()
         {
