@@ -70,8 +70,6 @@
     <Compile Include="Core\Game.cs" />
     <Compile Include="Core\GameContext.cs" />
     <Compile Include="Core\GameState.cs" />
-    <Compile Include="Core\Gd.cs" />
-    <Compile Include="Core\Nodes\WayfarerNode.cs" />
     <Compile Include="Core\Systems\Cameras\Camera.cs" />
     <Compile Include="Core\Systems\Cameras\FreeCamera.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />
@@ -92,27 +90,6 @@
     <Compile Include="Core\UI\Screens\LoadScreen.cs" />
     <Compile Include="Core\UserPrefCategory.cs" />
     <Compile Include="Core\UserPrefs.cs" />
-    <Compile Include="Core\Utils\Attributes\AttributeHandler.cs" />
-    <Compile Include="Core\Utils\Attributes\GetAttribute.cs" />
-    <Compile Include="Core\Utils\Coroutine\CoroutineHandle.cs" />
-    <Compile Include="Core\Utils\Coroutine\CoroutineHandler.cs" />
-    <Compile Include="Core\Utils\Debug\Log.cs" />
-    <Compile Include="Core\Utils\Debug\LoggingLevel.cs" />
-    <Compile Include="Core\Utils\Debug\Wayfarer.cs" />
-    <Compile Include="Core\Utils\Files\Directories.cs" />
-    <Compile Include="Core\Utils\Files\Paths.cs" />
-    <Compile Include="Core\Utils\Helpers\Arrays.cs" />
-    <Compile Include="Core\Utils\Helpers\Bytes.cs" />
-    <Compile Include="Core\Utils\Helpers\Colors.cs" />
-    <Compile Include="Core\Utils\Helpers\Direction.cs" />
-    <Compile Include="Core\Utils\Helpers\Math.cs" />
-    <Compile Include="Core\Utils\Helpers\Nodes.cs" />
-    <Compile Include="Core\Utils\Helpers\Sqlite.cs" />
-    <Compile Include="Core\Utils\Helpers\Textures.cs" />
-    <Compile Include="Core\Utils\Helpers\Vectors.cs" />
-    <Compile Include="Core\Utils\Localization\Lang.cs" />
-    <Compile Include="Core\Utils\Physics\CollisionGroup.cs" />
-    <Compile Include="Core\Utils\Physics\CollisionLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WayfarerCorePlugin.cs" />
   </ItemGroup>

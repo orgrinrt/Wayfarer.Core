@@ -17,7 +17,7 @@ namespace Wayfarer
 
         public override void _EnterTree()
         {
-            EnablePlugin();
+            base._EnterTree();
             
             try
             {
@@ -37,6 +37,15 @@ namespace Wayfarer
                 Log.Wayfarer.Error("Couldn't initialize Directories (static)", e, true);
             }
 
+            try
+            {
+                Files.SetPlugin(this);
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't set plugin to Files static", e, true);
+            }
+            
             try
             {
                 AddAutoLoads();
@@ -80,7 +89,7 @@ namespace Wayfarer
             RemoveCustomTypes();
             RemoveCustomResources();
             RemoveCustomControlsFromEditor();
-            DisablePlugin();
+            base._ExitTree();
         }
 
         public override void _Notification(int what)
@@ -98,7 +107,7 @@ namespace Wayfarer
 
         private void AddCustomTypes()
         {
-            Script wnScript = GD.Load<Script>("res://Addons/Wayfarer.Core/Core/Nodes/WayfarerNode.cs");
+            Script wnScript = GD.Load<Script>("res://Addons/Wayfarer/Nodes/WayfarerNode.cs");
             Texture wnIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/wayfarer.png");
             if (wnScript != null)
             {
