@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Godot;
-using Wayfarer.Core.Nodes;
+using Wayfarer.Nodes;
 
 namespace Wayfarer.Core.Systems.Managers
 {

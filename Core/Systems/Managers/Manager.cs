@@ -1,5 +1,5 @@
 ﻿
-using Wayfarer.Core.Nodes;
+using Wayfarer.Nodes;
 
 namespace Wayfarer.Core.Systems.Managers
 {

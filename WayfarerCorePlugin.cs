@@ -2,13 +2,12 @@
 
 using System;
 using Godot;
-using Wayfarer.Core.Systems;
-using Wayfarer.Core.Utils.Debug;
-using Wayfarer.Core.Utils.Files;
-using Wayfarer.Core.Utils.Helpers;
+using Wayfarer.ModuleSystem;
+using Wayfarer.Utils.Debug;
+using Wayfarer.Utils.Files;
 using Texture = Godot.Texture;
 
-namespace Wayfarer
+namespace Wayfarer.Core
 {
     [Tool]
     public class WayfarerCorePlugin : WayfarerModule

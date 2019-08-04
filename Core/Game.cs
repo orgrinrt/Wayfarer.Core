@@ -1,9 +1,8 @@
-using System.Diagnostics;
 using Godot;
 using Wayfarer.Core.Constants;
 using Wayfarer.Core.Systems.Managers;
-using Wayfarer.Core.Utils.Debug;
-using Wayfarer.Core.Utils.Files;
+using Wayfarer.Utils.Debug;
+using Wayfarer.Utils.Files;
 
 namespace Wayfarer.Core
 {
