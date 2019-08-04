@@ -37,7 +37,7 @@ namespace Wayfarer.Core.Systems
             _editorCoroutine = new CoroutineHandler();
             #endif
         }
-/*
+
         public override void _ExitTree()
         {
             try
@@ -45,7 +45,7 @@ namespace Wayfarer.Core.Systems
                 if (Coroutine != null)
                 {
                     Coroutine.StopAll();
-                    Coroutine = null;
+                    //Coroutine = null;
                 }
             }
             catch (Exception e)
@@ -57,14 +57,14 @@ namespace Wayfarer.Core.Systems
             try
             {
                 _editorCoroutine.StopAll();
-                _editorCoroutine = null;
+                //_editorCoroutine = null;
             }
             catch (Exception e)
             {
                 Log.Wf.Error("Couldn't stop and dispose the EditorCoroutine instance", e, true);
             }
             #endif
-        }*/
+        }
 
         public override void _Process(float delta)
         {
