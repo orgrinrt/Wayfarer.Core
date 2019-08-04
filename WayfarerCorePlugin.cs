@@ -11,12 +11,14 @@ using Texture = Godot.Texture;
 namespace Wayfarer
 {
     [Tool]
-    public class WayfarerCorePlugin : EditorPlugin
+    public class WayfarerCorePlugin : WayfarerModule
     {
         public EditorInterface EditorInterface => GetEditorInterface();
 
         public override void _EnterTree()
         {
+            EnablePlugin();
+            
             try
             {
                 Log.Initialize();
@@ -78,6 +80,15 @@ namespace Wayfarer
             RemoveCustomTypes();
             RemoveCustomResources();
             RemoveCustomControlsFromEditor();
+            DisablePlugin();
+        }
+
+        public override void _Notification(int what)
+        {
+            if (what is MainLoop.NotificationCrash)
+            {
+                Log.Wf.Immediate("Crash noticed by WayfarerCorePlugin");
+            }
         }
 
         private void AddAutoLoads()
