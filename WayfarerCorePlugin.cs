@@ -2,23 +2,20 @@
 
 using System;
 using Godot;
-using Wayfarer.Core.Systems;
-using Wayfarer.Core.Utils.Debug;
-using Wayfarer.Core.Utils.Files;
-using Wayfarer.Core.Utils.Helpers;
+using Wayfarer.ModuleSystem;
+using Wayfarer.Utils.Debug;
+using Wayfarer.Utils.Files;
 using Texture = Godot.Texture;
 
-namespace Wayfarer
+namespace Wayfarer.Core
 {
     [Tool]
     public class WayfarerCorePlugin : WayfarerModule
     {
         public EditorInterface EditorInterface => GetEditorInterface();
 
-        public override void _EnterTree()
+        public override void _EnterTreeSafe()
         {
-            EnablePlugin();
-            
             try
             {
                 Log.Initialize();
@@ -36,7 +33,25 @@ namespace Wayfarer
             {
                 Log.Wayfarer.Error("Couldn't initialize Directories (static)", e, true);
             }
+            
+            try
+            {
+                WayfarerProjectSettings.Initialize();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't initialize Directories (static)", e, true);
+            }
 
+            try
+            {
+                Files.SetPlugin(this);
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't set plugin to Files static", e, true);
+            }
+            
             try
             {
                 AddAutoLoads();
@@ -74,13 +89,43 @@ namespace Wayfarer
             }
         }
 
-        public override void _ExitTree()
+        public override void _ExitTreeSafe()
         {
-            RemoveAutoLoads();
-            RemoveCustomTypes();
-            RemoveCustomResources();
-            RemoveCustomControlsFromEditor();
-            DisablePlugin();
+            try
+            {
+                RemoveAutoLoads();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't remove AutoLoads", e, true);
+            }
+            
+            try
+            {
+                RemoveCustomTypes();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't remove CustomTypes", e, true);
+            }
+
+            try
+            {
+                RemoveCustomResources();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't remove CustomResources", e, true);
+            }
+            
+            try
+            {
+                RemoveCustomControlsFromEditor();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't remove Custom Controls from Editor", e, true);
+            }
         }
 
         public override void _Notification(int what)
@@ -98,22 +143,6 @@ namespace Wayfarer
 
         private void AddCustomTypes()
         {
-            Script wnScript = GD.Load<Script>("res://Addons/Wayfarer.Core/Core/Nodes/WayfarerNode.cs");
-            Texture wnIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/wayfarer.png");
-            if (wnScript != null)
-            {
-                if (wnIcon != null)
-                {
-                    AddCustomType("WayfarerNode", "Node", wnScript, wnIcon);
-                }
-                else
-                {
-                    Texture icon = GD.Load<Texture>("res://icon.png");
-                    AddCustomType("WayfarerNode", "Node", wnScript, icon);
-                }
-            }
-            
-
             Script managerScript = GD.Load<Script>("res://Addons/Wayfarer.Core/Core/Systems/Managers/Manager.cs");
             Texture managerIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/manager.png");
             if (managerScript != null)
@@ -128,7 +157,6 @@ namespace Wayfarer
                     AddCustomType("Manager", "Node", managerScript, icon);
                 }
             }
-            
         }
 
         private void AddCustomResources()
@@ -148,7 +176,6 @@ namespace Wayfarer
 
         private void RemoveCustomTypes()
         {
-            RemoveCustomType("WayfarerNode");
             RemoveCustomType("Manager");
         }
 

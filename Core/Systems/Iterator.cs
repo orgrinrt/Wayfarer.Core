@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 using Godot;
-using Wayfarer.Core.Nodes;
-using Wayfarer.Core.Utils.Coroutine;
-using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Nodes;
+using Wayfarer.Utils.Coroutine;
+using Wayfarer.Utils.Debug;
 
 namespace Wayfarer.Core.Systems
 {

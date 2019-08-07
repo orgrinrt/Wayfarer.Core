@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Wayfarer.Core.UI.Screens;
-using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Utils.Debug;
 
 namespace Wayfarer.Core.Systems.Managers
 {

@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 using Wayfarer.Core.Constants;
-using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Utils.Debug;
 using Camera = Wayfarer.Core.Systems.Cameras.Camera;
 
 namespace Wayfarer.Core.Systems.Managers

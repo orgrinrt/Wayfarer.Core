@@ -1,4 +1,4 @@
-﻿using Wayfarer.Core.Utils.Debug;
+﻿using Wayfarer.Utils.Debug;
 
 namespace Wayfarer.Core.Console
 {
