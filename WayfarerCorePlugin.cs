@@ -14,10 +14,8 @@ namespace Wayfarer.Core
     {
         public EditorInterface EditorInterface => GetEditorInterface();
 
-        public override void _EnterTree()
+        public override void _EnterTreeSafe()
         {
-            base._EnterTree();
-            
             try
             {
                 Log.Initialize();
@@ -30,6 +28,15 @@ namespace Wayfarer.Core
             try
             {
                 Directories.Initialize();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't initialize Directories (static)", e, true);
+            }
+            
+            try
+            {
+                WayfarerProjectSettings.Initialize();
             }
             catch (Exception e)
             {
@@ -82,13 +89,43 @@ namespace Wayfarer.Core
             }
         }
 
-        public override void _ExitTree()
+        public override void _ExitTreeSafe()
         {
-            RemoveAutoLoads();
-            RemoveCustomTypes();
-            RemoveCustomResources();
-            RemoveCustomControlsFromEditor();
-            base._ExitTree();
+            try
+            {
+                RemoveAutoLoads();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't remove AutoLoads", e, true);
+            }
+            
+            try
+            {
+                RemoveCustomTypes();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't remove CustomTypes", e, true);
+            }
+
+            try
+            {
+                RemoveCustomResources();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't remove CustomResources", e, true);
+            }
+            
+            try
+            {
+                RemoveCustomControlsFromEditor();
+            }
+            catch (Exception e)
+            {
+                Log.Wayfarer.Error("Couldn't remove Custom Controls from Editor", e, true);
+            }
         }
 
         public override void _Notification(int what)
@@ -106,22 +143,6 @@ namespace Wayfarer.Core
 
         private void AddCustomTypes()
         {
-            Script wnScript = GD.Load<Script>("res://Addons/Wayfarer/Nodes/WayfarerNode.cs");
-            Texture wnIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/wayfarer.png");
-            if (wnScript != null)
-            {
-                if (wnIcon != null)
-                {
-                    AddCustomType("WayfarerNode", "Node", wnScript, wnIcon);
-                }
-                else
-                {
-                    Texture icon = GD.Load<Texture>("res://icon.png");
-                    AddCustomType("WayfarerNode", "Node", wnScript, icon);
-                }
-            }
-            
-
             Script managerScript = GD.Load<Script>("res://Addons/Wayfarer.Core/Core/Systems/Managers/Manager.cs");
             Texture managerIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/manager.png");
             if (managerScript != null)
@@ -136,7 +157,6 @@ namespace Wayfarer.Core
                     AddCustomType("Manager", "Node", managerScript, icon);
                 }
             }
-            
         }
 
         private void AddCustomResources()
@@ -156,7 +176,6 @@ namespace Wayfarer.Core
 
         private void RemoveCustomTypes()
         {
-            RemoveCustomType("WayfarerNode");
             RemoveCustomType("Manager");
         }
 
