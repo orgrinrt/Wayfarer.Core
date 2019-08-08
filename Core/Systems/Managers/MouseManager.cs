@@ -80,7 +80,7 @@ namespace Wayfarer.Core.Systems.Managers
             _draggedNode = node;
             _dragAnchor = dragAnchor;
             _isDragging = true;
-            EmitSignal(nameof(StartDragging), _draggedNode);
+            EmitSignal(nameof(StartedDragging), _draggedNode);
         }
 
         public void SetCursorGlyph(CursorGlyph targetGlyph)
