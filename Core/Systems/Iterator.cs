@@ -42,7 +42,7 @@ namespace Wayfarer.Core.Systems
             try
             {
                 Coroutine?.StopAll();
-                //Coroutine = null;
+                Coroutine = null;
             }
             catch (Exception e)
             {
@@ -53,7 +53,7 @@ namespace Wayfarer.Core.Systems
             try
             {
                 _editorCoroutine.StopAll();
-                //_editorCoroutine = null;
+                _editorCoroutine = null;
             }
             catch (Exception e)
             {
