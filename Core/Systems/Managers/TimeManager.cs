@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Godot;
-using Wayfarer.Nodes;
 
 namespace Wayfarer.Core.Systems.Managers
 {
-    public class TimeManager : WayfarerNode
+    public class TimeManager : Manager
     {
         [Signal] public delegate void DayChanged(int day);
         [Signal] public delegate void MonthChanged(string monthString);

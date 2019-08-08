@@ -1,9 +1,9 @@
 ﻿
-using Wayfarer.Nodes;
+using Godot;
 
 namespace Wayfarer.Core.Systems.Managers
 {
-    public class Manager : WayfarerNode
+    public class Manager : Node
     {
         
     }

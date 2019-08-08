@@ -16,33 +16,10 @@ namespace Wayfarer.Core
 
         public override void _EnterTreeSafe()
         {
-            try
-            {
-                Log.Initialize();
-            }
-            catch (Exception e)
-            {
-                Log.Wayfarer.Error("Couldn't initialize Log (static)", e, true);
-            }
-
-            try
-            {
-                Directories.Initialize();
-            }
-            catch (Exception e)
-            {
-                Log.Wayfarer.Error("Couldn't initialize Directories (static)", e, true);
-            }
             
-            try
-            {
-                WayfarerProjectSettings.Initialize();
-            }
-            catch (Exception e)
-            {
-                Log.Wayfarer.Error("Couldn't initialize Directories (static)", e, true);
-            }
-
+            
+            
+            
             try
             {
                 Files.SetPlugin(this);
@@ -125,14 +102,6 @@ namespace Wayfarer.Core
             catch (Exception e)
             {
                 Log.Wayfarer.Error("Couldn't remove Custom Controls from Editor", e, true);
-            }
-        }
-
-        public override void _Notification(int what)
-        {
-            if (what is MainLoop.NotificationCrash)
-            {
-                Log.Wf.Immediate("Crash noticed by WayfarerCorePlugin");
             }
         }
 
