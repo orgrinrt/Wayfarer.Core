@@ -16,10 +16,6 @@ namespace Wayfarer.Core
 
         public override void _EnterTreeSafe()
         {
-            
-            
-            
-            
             try
             {
                 Files.SetPlugin(this);
