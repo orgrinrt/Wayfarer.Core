@@ -1,7 +1,6 @@
 using System;
 using System.Data;
 using Godot;
-using Wayfarer.Nodes;
 using Wayfarer.Utils.Coroutine;
 using Wayfarer.Utils.Debug;
 
@@ -10,7 +9,7 @@ namespace Wayfarer.Core.Systems
     #if TOOLS
     [Tool]
     #endif
-    public class Iterator : WayfarerNode
+    public class Iterator : Node
     {
         private static int _currId = 100; // we'll reserve 0-99 to things that we might want to have as statically identified.. can't really say why, but it's here for the off-chance
         public static CoroutineHandler Coroutine;
@@ -42,11 +41,8 @@ namespace Wayfarer.Core.Systems
         {
             try
             {
-                if (Coroutine != null)
-                {
-                    Coroutine.StopAll();
-                    //Coroutine = null;
-                }
+                Coroutine?.StopAll();
+                //Coroutine = null;
             }
             catch (Exception e)
             {
@@ -68,7 +64,7 @@ namespace Wayfarer.Core.Systems
 
         public override void _Process(float delta)
         {
-            Coroutine.Update(delta);
+            Coroutine?.Update(delta);
             
             #if TOOLS
             if (_editorCoroutine != null)
@@ -77,7 +73,7 @@ namespace Wayfarer.Core.Systems
             }
             else
             {
-                GetEditorCoroutine();
+                GetEditorCoroutine().Update(delta);
             }
             #endif
         }
