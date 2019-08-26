@@ -2,6 +2,6 @@
 {
     public class ResPaths
     {
-        public const string FreeCamPrefab = "res://Assets/Scenes/Cameras/FreeCam.tscn";
+        public const string FreeCamPrefab = "res://Addons/Wayfarer.Core/Assets/Scenes/Systems/Cameras/FreeCam.tscn";
     }
 }
