@@ -21,10 +21,6 @@ namespace Wayfarer.Core
         public string HostName => _hostName;
         public GameState State => _state;
         public GameContext CurrContext => _currContext;
-        /*
-        private Directories _directories = new Directories();
-        public Directories Directories => _directories;
-        */
 
         private static Game _self;
         private static UserPrefs _userPrefs;
