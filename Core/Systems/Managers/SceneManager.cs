@@ -38,6 +38,29 @@ namespace Wayfarer.Core.Systems.Managers
             Log.Print("Changing scene to: " + path, true);
             Iterator.Coroutine.Run(LoadSceneAndMakeItMainScene());
         }
+        
+        /// <summary>
+        /// Changes the whole Main scene to a PackedScene in a specified path
+        /// </summary>
+        /// <param name="path"></param>
+        public void ChangeScene(PackedScene scene)
+        {
+            string path = scene.ResourcePath;
+            
+            Game.Self.EmitSignal(nameof(Game.StartedToChangeLevel));
+            
+            _loader = ResourceLoader.LoadInteractive(path);
+            
+            if (_loader == null || path == "res://")
+            {
+                Log.Crash("Couldn't load a scene: Loader at path " + path + " was NULL", true);
+            }
+            
+            GetLoadScreen().StartLoadingVisuals(0.5f);
+
+            Log.Print("Changing scene to: " + path, true);
+            Iterator.Coroutine.Run(LoadSceneAndMakeItMainScene());
+        }
 
         /// <summary>
         /// Interactively loads a packedScene and in the end _replaces_ the whole Main scene to the loaded scene
