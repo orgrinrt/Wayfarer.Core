@@ -2,7 +2,7 @@ using Godot;
 
 namespace Wayfarer.Core.Systems.Cameras
 {
-    public class FreeCamera : Camera
+    public class FreeCamera2D : Camera2D
     {
         private int _panSpeed = 13;
         private float _zoomSpeed = 0.5f;
@@ -18,7 +18,8 @@ namespace Wayfarer.Core.Systems.Cameras
         {
             base._Ready();
             
-            _tween = (Tween) GetNode("./Tween");
+            _tween = new Tween();
+            AddChild(_tween);
         }
 
         public override void _PhysicsProcess(float delta)

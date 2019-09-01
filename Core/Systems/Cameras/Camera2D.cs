@@ -3,7 +3,7 @@ using Wayfarer.Core.Constants;
 
 namespace Wayfarer.Core.Systems.Cameras
 {
-    public class Camera : Camera2D
+    public class Camera2D : Godot.Camera2D
     {
         public override void _Ready()
         {
