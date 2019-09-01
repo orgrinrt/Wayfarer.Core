@@ -70,8 +70,10 @@
     <Compile Include="Core\Game.cs" />
     <Compile Include="Core\GameContext.cs" />
     <Compile Include="Core\GameState.cs" />
-    <Compile Include="Core\Systems\Cameras\Camera.cs" />
-    <Compile Include="Core\Systems\Cameras\FreeCamera.cs" />
+    <Compile Include="Core\Systems\Cameras\Camera3D.cs" />
+    <Compile Include="Core\Systems\Cameras\Camera2D.cs" />
+    <Compile Include="Core\Systems\Cameras\FreeCamera2D.cs" />
+    <Compile Include="Core\Systems\Cameras\FreeCamera3D.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />
     <Compile Include="Core\Systems\Managers\AudioManager.cs" />
     <Compile Include="Core\Systems\Managers\CameraManager.cs" />
