@@ -62,7 +62,7 @@ namespace Wayfarer.Core.Systems.Managers
                     break;
                 }
                 
-                int startTicksMs = OS.GetTicksMsec();
+                uint startTicksMs = OS.GetTicksMsec();
 
                 while (OS.GetTicksMsec() < startTicksMs + _maxFrameTime)
                 {
